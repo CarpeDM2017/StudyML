@@ -1,0 +1,6 @@
+# Ignore all files in Intelij Configuration Folder
+.idea/
+
+# Ignore all python cache files
+*.pyc
+*.pyo
