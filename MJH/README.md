@@ -1,3 +1,9 @@
 ﻿# 문지환의 폴더
 
-print("Hello ML!")
+import tensorflow as tf
+
+hello = tf.constant("Hello ML!")
+
+sess = tf.Session()
+
+print(sess.run(hello))
