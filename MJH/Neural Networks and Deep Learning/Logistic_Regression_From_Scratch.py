@@ -113,15 +113,14 @@ def predict(w, b, X):
         if A[0, i] >= 0.5:
             Y_prediction[0, i] = 1
         else:
-            Y_prediction[0, i] = 1
+            Y_prediction[0, i] = 0
 
     assert(Y_prediction.shape == (1, m))
 
     return Y_prediction
 
 
-
-def model(X_train, Y_train, X_test, Y_test, num_iterations = 2000, learning_rate = 0.5, print_cost=True):
+def model(X_train, Y_train, X_test, Y_test, num_iterations=2000, learning_rate=0.5, print_cost=True):
     """
     Builds Logistic Regression Model and test model using X_test and Y_test
 
