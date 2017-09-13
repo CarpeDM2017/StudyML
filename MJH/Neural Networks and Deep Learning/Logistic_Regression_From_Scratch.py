@@ -103,7 +103,7 @@ def predict(w, b, X):
     """
 
     m = X.shape[1]
-    Y_prediction = np.zeros((1,m))
+    Y_prediction = np.zeros((1, m))
 
     w = w.reshape(X.shape[0], 1)
 
