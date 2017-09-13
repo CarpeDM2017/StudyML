@@ -79,7 +79,7 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost=False):
         b = b - learning_rate * db
 
         if i % 100 == 0:
-            cost.append(cost)
+            costs.append(cost)
 
             if print_cost:
                 print("Cost after iteration %d : %f" % (i, cost))
