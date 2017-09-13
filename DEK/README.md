@@ -1,3 +1,3 @@
-﻿# 김영훈의 폴더
+﻿# 김다은의 폴더
 
-Hello World! - 2017.09.10
+Hello World! - by DEK
