@@ -84,7 +84,7 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost=False):
             if print_cost:
                 print("Cost after iteration %d : %f" % (i, cost))
 
-        params = {'w': w
+        params = {'w': w,
                   'b': b}
 
         grads = {'dw': dw,
