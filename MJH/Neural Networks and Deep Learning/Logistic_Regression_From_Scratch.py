@@ -90,7 +90,7 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost=False):
     grads = {'dw': dw,
              'db': db}
 
-    return params, grads, cost
+    return params, grads, costs
 
 
 def predict(w, b, X):
