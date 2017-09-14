@@ -20,7 +20,7 @@ def propagate(w, b, X, Y):
     Arguments:
     w -- weight. numpy array with shape (dim, 1)
     b -- bias. real number
-    X -- training X. numpy array with shape (dim, m)
+    X -- training X. numpy array with shape (dim, m), that is, x(i) vectors stacked horizontally
     Y -- training Y (true label). numpy array with shape (1, m)
 
     * dim is number of features excluding 1s
@@ -58,7 +58,7 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost=False):
 
     :param w: weights. numpy array of shape (dim, 1)
     :param b: bias, real number
-    :param X: training X, numpy array of shape (dim, m)
+    :param X: training X, numpy array of shape (dim, m), that is, x(i) vectors stacked horizontally
     :param Y: training Y (true label), numpy array of shape (1, m)
     :param num_iterations: number of times gradient descent algorithm is ran
     :param learning_rate: learning rate of gradient descent update rule
@@ -100,7 +100,7 @@ def predict(w, b, X):
 
     :param w: weights. numpy array of shape (dim, 1)
     :param b: bias. scalar/real number
-    :param X: numpy array of shape (dim, m)
+    :param X: numpy array of shape (dim, m), that is, x(i) vectors stacked horizontally
     :return: prediction of Y (a.k.a Y hat)
     """
 
@@ -126,7 +126,7 @@ def model(X_train, Y_train, X_test, Y_test, num_iterations=2000, learning_rate=0
     """
     Builds Logistic Regression Model and test model using X_test and Y_test
 
-    :param X_train: training set. numpy array of shape (dim, m)
+    :param X_train: training set. numpy array of shape (dim, m), that is, x(i) vectors stacked horizontally
     :param Y_train: training labels. numpy array of shape (1, m)
     :param X_test: testing set.
     :param Y_test: testing labels
@@ -160,7 +160,7 @@ def model(X_train, Y_train, X_test, Y_test, num_iterations=2000, learning_rate=0
     return d
 
 
-def test_model(num_iterations=2000, learning_rate=0.5, print_cost=True, test_ratio=0.3):
+def test_model(num_iterations=2000, learning_rate=0.1, print_cost=True, test_ratio=0.3):
     """
 
     Tests logistic regression model using breast cancer data sets from scikit-learn library
