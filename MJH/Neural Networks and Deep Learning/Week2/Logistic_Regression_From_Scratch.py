@@ -1,5 +1,7 @@
 import numpy as np
-
+import sklearn.datasets as ds
+import sys
+import tensorflow as tf
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
@@ -37,7 +39,7 @@ def propagate(w, b, X, Y):
     cost = -1 / m * np.sum(Y * np.log(A) + (1-Y) * np.log(1-A))
 
     # Backward Propagation
-    dw = 1 / m * np.dot(X, (A - Y).T)  # A-Y is dz
+    dw = 1 / m * np.dot(X, (A - Y).T)  # A-Y is dz, thus X * dz.T
     db = 1 / m * np.sum(A - Y)
 
     cost = np.squeeze(cost)
@@ -158,3 +160,45 @@ def model(X_train, Y_train, X_test, Y_test, num_iterations=2000, learning_rate=0
     return d
 
 
+def test_model(num_iterations=2000, learning_rate=0.5, print_cost=True, test_ratio=0.3):
+    """
+
+    Tests logistic regression model using breast cancer data sets from scikit-learn library
+
+    Args:
+        num_iterations: Number of iterations to optimize
+        learning_rate: learning rate of optimization process
+        print_cost: whether to print cost at every 100 steps
+        test_ratio: ratio of data sets to be used as test sets
+
+    Returns:
+        d: result of optimization
+    """
+
+    data = ds.load_breast_cancer(return_X_y=True)
+    X = data[0]
+    Y = data[1]
+
+    train_m = int(len(X) * (1 - test_ratio))
+
+    train_X = X[:train_m].T
+    train_Y = Y[:train_m]
+    train_Y = train_Y.reshape(1, len(train_Y))
+
+    test_X = X[train_m:].T
+    test_Y = Y[train_m:]
+    test_Y = test_Y.reshape(1, len(test_Y))
+
+    d = model(train_X, train_Y, test_X, test_Y, num_iterations, learning_rate, print_cost)
+
+    return d
+
+
+if __name__ == '__main__':
+    if len(sys.argv) > 3:
+        num_iter = int(sys.argv[1])
+        learning_rate = float(sys.argv[2])
+        test_ratio = float(sys.argv[3])
+        test_model(num_iterations=num_iter, learning_rate=learning_rate, test_ratio=test_ratio)
+    else:
+        test_model()
