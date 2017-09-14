@@ -84,13 +84,13 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost=False):
             if print_cost:
                 print("Cost after iteration %d : %f" % (i, cost))
 
-        params = {'w': w,
-                  'b': b}
+    params = {'w': w,
+              'b': b}
 
-        grads = {'dw': dw,
-                 'db': db}
+    grads = {'dw': dw,
+             'db': db}
 
-        return params, grads, cost
+    return params, grads, cost
 
 
 def predict(w, b, X):
