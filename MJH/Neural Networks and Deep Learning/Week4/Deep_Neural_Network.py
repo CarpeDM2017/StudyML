@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 
 def sigmoid(z):
@@ -272,14 +273,15 @@ def update_parameters(parameters, grads, learning_rate):
     return parameters
 
 
-def L_layer_model(X, Y, layers_dims, learning_rate=0.0075, num_iterations=3000, print_cost=False):  # lr was 0.009
+def L_layer_model(X, Y, layer_dims, learning_rate=0.0075, num_iterations=3000, print_cost=False):  # lr was 0.009
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
 
     Arguments:
     X -- data, numpy array of shape (number of examples, num_px * num_px * 3)
     Y -- true "label" vector (containing 0 if cat, 1 if non-cat), of shape (1, number of examples)
-    layers_dims -- list containing the input size and each layer size, of length (number of layers + 1).
+    layer_dims -- list containing the input size and each layer size, of length (number of layers + 1).
+                  ex. if n0 = 2, n1 = 3, n2 = 1, thene layer_dims = [2,3,1]
     learning_rate -- learning rate of the gradient descent update rule
     num_iterations -- number of iterations of the optimization loop
     print_cost -- if True, it prints the cost every 100 steps
@@ -292,7 +294,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.0075, num_iterations=3000, 
     costs = []  # keep track of cost
 
     # Parameters initialization.
-    parameters = initialize_parameters_deep(layers_dims)
+    parameters = initialize_parameters_deep(layer_dims)
 
     # Loop (gradient descent)
     for i in range(0, num_iterations):
@@ -302,7 +304,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.0075, num_iterations=3000, 
 
         # Compute cost.
         cost = compute_cost(AL, Y)
-    
+
         # Backward propagation.
         grads = L_model_backward(AL, Y, caches)
 
@@ -310,14 +312,71 @@ def L_layer_model(X, Y, layers_dims, learning_rate=0.0075, num_iterations=3000, 
         parameters = update_parameters(parameters, grads, learning_rate)
 
         # Print the cost every 100 training example
-        if print_cost and i % 100 == 0:
+        if print_cost and i % 1000 == 0:
             print("Cost after iteration %i: %f" % (i, cost))
-        if print_cost and i % 100 == 0:
+        if i % 1000 == 0:
             costs.append(cost)
 
-    return parameters
+    return parameters, costs
 
 
-def test_L_layer_model(learning_rate=0.0075, num_iterations=3000, print_cost=True):
-    pass
+def predict(parameters, X):
+    AL, cache = L_model_forward(X, parameters)
+    prediction = (AL > 0.5)
+    return prediction
 
+
+def test_L_layer_model(m_train=3000, m_test=500, layer_dims=[2, 5, 1], learning_rate=0.01, num_iterations=200000,
+                       print_cost=True):
+
+    # prepare training and test sets
+    X_train = np.zeros((2, m_train))
+    Y_train = np.zeros((1, m_train))
+
+    for i in range(m_train):
+        x1 = random.uniform(-5, 5)
+        x2 = random.uniform(-5, 5)
+
+        X_train[0, i] = x1
+        X_train[1, i] = x2
+
+        # optimal decision boundary is circle
+        if x1 ** 2 + x2 ** 2 > 15:
+            Y_train[0, i] = 1
+        else:
+            Y_train[0, i] = 0
+
+    X_test = np.zeros((2, m_test))
+    Y_test = np.zeros((1, m_test))
+
+    for i in range(m_test):
+        x1 = random.uniform(-5, 5)
+        x2 = random.uniform(-5, 5)
+
+        X_test[0, i] = x1
+        X_test[1, i] = x2
+
+        if x1 ** 2 + x2 ** 2 > 15:
+            Y_test[0, i] = 1
+        else:
+            Y_test[0, i] = 0
+
+    # use nn_model to get parameters
+    params, costs = L_layer_model(X_train, Y_train, layer_dims=layer_dims, num_iterations=num_iterations,
+                                  learning_rate=learning_rate, print_cost=print_cost)
+    # if n0 is small (i.e. data is not complex) like this example, shallow neural network works better
+    # since it learns much faster
+
+    print("Parameters :", params)
+
+    prediction_train = predict(params, X_train)
+    prediction_test = predict(params, X_test)
+
+    print("train accuracy: {} %".format(100 - np.mean(np.abs(prediction_train - Y_train)) * 100))
+    print("test accuracy: {} %".format(100 - np.mean(np.abs(prediction_test - Y_test)) * 100))
+
+    return params
+
+
+if __name__ == '__main__':
+    test_L_layer_model()
