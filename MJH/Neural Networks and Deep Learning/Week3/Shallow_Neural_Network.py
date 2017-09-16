@@ -1,8 +1,11 @@
-# by MJH
+# MJH
 
 import numpy as np
 import random
-import sys
+
+
+# Added sigmoid function, which was not explicitly programmed in Coursera programming assignment
+# Also added test_nn_model function to test our 2-layer nn model
 
 
 def sigmoid(z):

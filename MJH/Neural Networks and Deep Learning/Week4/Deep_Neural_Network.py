@@ -1,5 +1,13 @@
+# MJH
+
 import numpy as np
 import random
+
+
+# Added sigmoid, relu, sigmoid_backward, relu_backward functions,
+# which were not explicitly programmed in Coursera programming assignment.
+
+# Also, added predict function and test_L_layer_model function to test model
 
 
 def sigmoid(z):
@@ -11,12 +19,16 @@ def relu(z):
 
 
 def sigmoid_backward(dA, activation_cache):
+    # sigmoid'(z) = sigmoid *(1 - sigmoid)
+    # activation_cache is Z
     A = sigmoid(activation_cache)[0]
     dZ = dA * A * (1-A)
     return dZ
 
 
 def relu_backward(dA, activation_cache):
+    # relu'(z) = 1 if z > 0, 0 otherwise
+    # activation_cache is Z
     dZ = dA * (activation_cache > 0)
     return dZ
 

@@ -1,7 +1,9 @@
+# MJH
+
 import numpy as np
 import sklearn.datasets as ds
 import sys
-import tensorflow as tf
+
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
