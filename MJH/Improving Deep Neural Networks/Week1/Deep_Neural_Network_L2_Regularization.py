@@ -1,14 +1,9 @@
-# MJH
+# by MJH
+
+# implemented L2 regularization to Deep Neural Network model
 
 import numpy as np
 import random
-
-
-# Added sigmoid, relu, sigmoid_backward, relu_backward functions,
-# which were not explicitly programmed in Coursera programming assignment.
-
-# Also, added predict function and test_L_layer_model function to test model
-
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z)), z
@@ -49,7 +44,7 @@ def initialize_parameters_deep(layer_dims):
     L = len(layer_dims)  # number of layers in the network
 
     for l in range(1, L):
-        # implemented He initialization
+        # implemented 'He initialization'
         parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l - 1]) * np.sqrt(2. / layer_dims[l-1])
         parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
 
@@ -144,7 +139,7 @@ def L_model_forward(X, parameters):
     return AL, caches
 
 
-def compute_cost(AL, Y):
+def compute_cost(AL, Y, parameters, m, lambd=0.1, regularization=True):
     """
     Implement the cost function defined by equation (7).
 
@@ -160,6 +155,10 @@ def compute_cost(AL, Y):
 
     # Compute loss from aL and y.
     cost = - 1 / m * np.sum(Y * np.log(AL) + (1 - Y) * np.log(1 - AL))
+
+    if regularization:
+        for l in range(1, len(parameters) // 2 + 1):
+            cost += lambd / (2 * m) * np.sum(np.square(parameters['W' + str(l)]))
 
     cost = np.squeeze(cost)  # To make sure your cost's shape is what we expect (e.g. this turns [[17]] into 17).
     assert (cost.shape == ())
@@ -262,7 +261,7 @@ def L_model_backward(AL, Y, caches):
     return grads
 
 
-def update_parameters(parameters, grads, learning_rate):
+def update_parameters(parameters, grads, learning_rate, m, regularization=True, lambd=0.1):
     """
     Update parameters using gradient descent
 
@@ -280,13 +279,19 @@ def update_parameters(parameters, grads, learning_rate):
 
     # Update rule for each parameter. Use a for loop.
     for l in range(L):
-        parameters["W" + str(l + 1)] -= learning_rate * grads['dW' + str(l + 1)]
-        parameters["b" + str(l + 1)] -= learning_rate * grads['db' + str(l + 1)]
+        if regularization:
+            parameters["W" + str(l + 1)] -= learning_rate * grads['dW' + str(l + 1)] + lambd / m * parameters['W' + str(l + 1)]
+            parameters["b" + str(l + 1)] -= learning_rate * grads['db' + str(l + 1)]
+
+        else:
+            parameters["W" + str(l + 1)] -= learning_rate * grads['dW' + str(l + 1)]
+            parameters["b" + str(l + 1)] -= learning_rate * grads['db' + str(l + 1)]
 
     return parameters
 
 
-def L_layer_model(X, Y, layer_dims, learning_rate=0.0075, num_iterations=3000, print_cost=False):  # lr was 0.009
+def L_layer_model_regularized(X, Y, layer_dims, learning_rate=0.0075, num_iterations=3000, regularization=True, lambd=0.1,
+                  print_cost=False):
     """
     Implements a L-layer neural network: [LINEAR->RELU]*(L-1)->LINEAR->SIGMOID.
 
@@ -303,7 +308,7 @@ def L_layer_model(X, Y, layer_dims, learning_rate=0.0075, num_iterations=3000, p
     parameters -- parameters learnt by the model. They can then be used to predict.
     """
 
-    np.random.seed(1)
+    m = X.shape[1]
     costs = []  # keep track of cost
 
     # Parameters initialization.
@@ -316,13 +321,13 @@ def L_layer_model(X, Y, layer_dims, learning_rate=0.0075, num_iterations=3000, p
         AL, caches = L_model_forward(X, parameters)
 
         # Compute cost.
-        cost = compute_cost(AL, Y)
+        cost = compute_cost(AL, Y, parameters, m, lambd=lambd, regularization=regularization)
 
         # Backward propagation.
         grads = L_model_backward(AL, Y, caches)
 
-        # Update parameters.
-        parameters = update_parameters(parameters, grads, learning_rate)
+        # Update parameters.i
+        parameters = update_parameters(parameters, grads, learning_rate, m, regularization=regularization, lambd=lambd)
 
         # Print the cost every 100 training example
         if print_cost and i % 1000 == 0:
@@ -340,7 +345,7 @@ def predict(parameters, X):
 
 
 def test_L_layer_model(m_train=3000, m_test=500, layer_dims=[2, 5, 1], learning_rate=0.01, num_iterations=20000,
-                       print_cost=True):
+                       regularization=True, lambd=0.1, print_cost=True):
 
     # prepare training and test sets
     X_train = np.zeros((2, m_train))
@@ -375,8 +380,9 @@ def test_L_layer_model(m_train=3000, m_test=500, layer_dims=[2, 5, 1], learning_
             Y_test[0, i] = 0
 
     # use nn_model to get parameters
-    params, costs = L_layer_model(X_train, Y_train, layer_dims=layer_dims, num_iterations=num_iterations,
-                                  learning_rate=learning_rate, print_cost=print_cost)
+    params, costs = L_layer_model_regularized(X_train, Y_train, layer_dims=layer_dims, num_iterations=num_iterations,
+                                              regularization=regularization, lambd=lambd,
+                                              learning_rate=learning_rate, print_cost=print_cost)
     # if n0 is small (i.e. data is not complex) like this example, shallow neural network works better
     # since it learns much faster
 
