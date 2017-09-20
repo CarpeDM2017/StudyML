@@ -5,6 +5,7 @@
 import numpy as np
 import random
 
+
 def sigmoid(z):
     return 1 / (1 + np.exp(-z)), z
 
@@ -216,7 +217,7 @@ def linear_activation_backward(dA, cache, activation):
     return dA_prev, dW, db
 
 
-def L_model_backward(AL, Y, caches):
+def L_model_backward(AL, Y, caches, parameters, regularization=True, lambd=0.1):
     """
     Implement the backward propagation for the [LINEAR->RELU] * (L-1) -> LINEAR -> SIGMOID group
 
@@ -255,13 +256,16 @@ def L_model_backward(AL, Y, caches):
         current_cache = caches[l]
         dA_prev_temp, dW_temp, db_temp = linear_activation_backward(grads["dA" + str(l + 2)], current_cache, 'relu')
         grads["dA" + str(l + 1)] = dA_prev_temp
-        grads["dW" + str(l + 1)] = dW_temp
+        if regularization:
+            grads['dW' + str(l+1)] = dW_temp + lambd / m * parameters['W' + str(l+1)]
+        else:
+            grads["dW" + str(l+1)] = dW_temp
         grads["db" + str(l + 1)] = db_temp
 
     return grads
 
 
-def update_parameters(parameters, grads, learning_rate, m, regularization=True, lambd=0.1):
+def update_parameters(parameters, grads, learning_rate):
     """
     Update parameters using gradient descent
 
@@ -279,13 +283,8 @@ def update_parameters(parameters, grads, learning_rate, m, regularization=True, 
 
     # Update rule for each parameter. Use a for loop.
     for l in range(L):
-        if regularization:
-            parameters["W" + str(l + 1)] -= learning_rate * grads['dW' + str(l + 1)] + lambd / m * parameters['W' + str(l + 1)]
-            parameters["b" + str(l + 1)] -= learning_rate * grads['db' + str(l + 1)]
-
-        else:
-            parameters["W" + str(l + 1)] -= learning_rate * grads['dW' + str(l + 1)]
-            parameters["b" + str(l + 1)] -= learning_rate * grads['db' + str(l + 1)]
+        parameters["W" + str(l + 1)] -= learning_rate * grads['dW' + str(l + 1)]
+        parameters["b" + str(l + 1)] -= learning_rate * grads['db' + str(l + 1)]
 
     return parameters
 
@@ -323,16 +322,19 @@ def L_layer_model_regularized(X, Y, layer_dims, learning_rate=0.0075, num_iterat
         # Compute cost.
         cost = compute_cost(AL, Y, parameters, m, lambd=lambd, regularization=regularization)
 
+        if np.isnan(cost):
+            break
+
         # Backward propagation.
-        grads = L_model_backward(AL, Y, caches)
+        grads = L_model_backward(AL, Y, caches, parameters, regularization=regularization, lambd=lambd)
 
         # Update parameters.i
-        parameters = update_parameters(parameters, grads, learning_rate, m, regularization=regularization, lambd=lambd)
+        parameters = update_parameters(parameters, grads, learning_rate )
 
         # Print the cost every 100 training example
         if print_cost and i % 1000 == 0:
             print("Cost after iteration %i: %f" % (i, cost))
-        if i % 1000 == 0:
+        if i % 100 == 0:
             costs.append(cost)
 
     return parameters, costs

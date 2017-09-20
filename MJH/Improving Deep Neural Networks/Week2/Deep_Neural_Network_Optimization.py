@@ -6,6 +6,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
+
 def sigmoid(z):
     return 1 / (1 + np.exp(-z)), z
 
@@ -540,6 +541,9 @@ def L_model(X, Y, layer_dims, optimizer, learning_rate=0.0007, mini_batch_size=6
             # Compute cost
             cost = compute_cost(AL, minibatch_Y)
 
+            if np.isnan(cost):
+                break
+
             # Backward propagation
             grads = L_model_backward(AL, minibatch_Y, caches)
 
@@ -552,6 +556,9 @@ def L_model(X, Y, layer_dims, optimizer, learning_rate=0.0007, mini_batch_size=6
                 t += 1  # Adam counter
                 parameters, v, s = update_parameters_with_adam(parameters, grads, v, s,
                                                                t, learning_rate, beta1, beta2, epsilon)
+
+        if np.isnan(cost):
+            break
 
         # Print the cost every 1000 epoch
         if print_cost and i % 1 == 0:
@@ -568,11 +575,12 @@ def predict(parameters, X):
     return prediction
 
 
-def test_L_model(m_train=30000, m_test=500, layer_dims=[2, 5, 3, 1], optimizer='adam', learning_rate=0.0007,
-                       mini_batch_size=64, beta=0.9, beta1=0.9, beta2=0.999, epsilon=1e-8, num_epochs=100,
+def test_L_model(m_train=30000, m_test=500, layer_dims=[2, 5, 5, 3, 1], optimizer='adam', learning_rate=0.0007,
+                       mini_batch_size=64, beta=0.9, beta1=0.9, beta2=0.999, epsilon=1e-8, num_epochs=30,
                        print_cost=True):
 
     # prepare training and test sets
+
     X_train = np.zeros((2, m_train))
     Y_train = np.zeros((1, m_train))
 
