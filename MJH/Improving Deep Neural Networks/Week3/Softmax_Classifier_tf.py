@@ -8,11 +8,11 @@ import sklearn.datasets as ds
 def one_hot_matrix(labels, C):
     """
     Input:
-    labels -- vector containing the labels
-    C -- number of classes
+        labels -- vector containing the labels
+        C -- number of classes
 
     Output:
-    one_hot -- labels in one hot matrix
+        one_hot -- labels in one hot matrix
     """
 
     one_hot_converter = tf.one_hot(labels, depth=C, axis=0)  # axis=0 means that vectors are columns of the matrix
@@ -110,7 +110,7 @@ def random_mini_batches(X, Y, mini_batch_size=64, seed=0):
     return mini_batches
 
 
-def model(X_train, Y_train, X_test, Y_test, layer_dims=[6,4,2], learning_rate=0.0001, num_epochs=4000,
+def model(X_train, Y_train, X_test, Y_test, layer_dims=[40, 20, 6, 4, 2], learning_rate=0.0001, num_epochs=4000,
           minibatch_size=32, print_cost=True):
 
     """
@@ -184,11 +184,16 @@ def model(X_train, Y_train, X_test, Y_test, layer_dims=[6,4,2], learning_rate=0.
         return parameters, costs
 
 
-def test_model(test_ratio=0.3, layer_dims=[6,4,2], learning_rate=0.0001, num_epochs=4000,
+def test_model(test_ratio=0.3, layer_dims=[20, 6, 4, 2], learning_rate=0.0001, num_epochs=10000,
                minibatch_size=32, print_cost=True):
 
     X, Y = ds.load_digits(return_X_y=True)
     m_total = len(X)
+
+    permutation = list(np.random.permutation(m_total))
+    X = X[permutation, :]
+    Y = Y[permutation]
+    # shuffle X and Y so that train set and test set are from approximately same distribution
 
     m_train = int(m_total * (1 - test_ratio))
 
