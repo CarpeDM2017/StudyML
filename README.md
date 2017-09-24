@@ -1,6 +1,27 @@
 ﻿Welcome to Carpe DM 2017!!
 ==========================
 
+### 2017.09.21
+
+1. 활동내용 관련 workout 폴더를 추가했습니다. 새로 파일을 업로드하기 전에 우선 pull 부탁드립니다.
+
+2. 1주차 활동내용 jupyter notebook을 추가하였습니다. 9/24 일요일까지 꼭 작성해주세요 :)
+
+3. Anaconda를 설치해주세요!
+   <br/>
+   https://conda.io/docs/user-guide/install/index.html
+   <br/>
+   Anaconda 홈페이지를 통해 Anaconda를 다운로드합니다.
+   <br/>
+   Anaconda란 Python 언어와 자주 이용되는 여러 패키지와 도구들을 한번에 설치할 수 있도록 해주는 고마운 오픈소스 배포판입니다.
+
+4. Jupyter Notebook을 설치합시다.
+   <br/>
+   https://brunch.co.kr/@mapthecity/16
+   <br/>
+   Coursera 강의와 앞으로의 활동에 필요한 IDE(통합개발환경)인 Jupyter Notebook입니다. 위 URL을 참조하여 ipynb 사용법을 익혀봅시다. 일반적으로 Jupyter Notebook은 커맨드 프롬프트, conda 프롬프트 등 명령창을 통해 실행합니다.
+
+
 ### 2017.09.10
 
 1. 모두 github 아이디를 만들어주세요.
