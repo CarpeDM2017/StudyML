@@ -12,7 +12,7 @@ def sigmoid(z):
 
 
 def relu(z):
-    return (z > 0) * z, z
+    return np.maximum(z, 0), z
 
 
 def sigmoid_backward(dA, activation_cache):

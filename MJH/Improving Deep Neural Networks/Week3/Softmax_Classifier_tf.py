@@ -43,7 +43,7 @@ def initialize_parameters(layer_dims):
     return parameters
 
 
-def forward_propagation(X, parameters):
+def forward_propagation(X, parameters, dropout=True, keep_prob=0.7):
     L = len(parameters) // 2
 
     A = X
@@ -51,6 +51,8 @@ def forward_propagation(X, parameters):
         A_prev = A
         Z = tf.matmul(parameters['W' + str(l)], A_prev) + parameters['b' + str(l)]
         A = tf.nn.relu(Z)
+        if dropout:
+            A = tf.nn.dropout(A, keep_prob=keep_prob)
 
     ZL = tf.matmul(parameters['W' + str(L)], A) + parameters['b' + str(L)]
 
@@ -110,8 +112,8 @@ def random_mini_batches(X, Y, mini_batch_size=64, seed=0):
     return mini_batches
 
 
-def model(X_train, Y_train, X_test, Y_test, layer_dims=[40, 20, 6, 4, 2], learning_rate=0.0001, num_epochs=4000,
-          minibatch_size=32, print_cost=True):
+def model(X_train, Y_train, X_test, Y_test, layer_dims=[100, 100, 40, 20], learning_rate=0.0001, num_epochs=4000,
+          minibatch_size=64, dropout=True, keep_prob=0.7, print_cost=True):
 
     """
     Args:
@@ -123,11 +125,16 @@ def model(X_train, Y_train, X_test, Y_test, layer_dims=[40, 20, 6, 4, 2], learni
         learning_rate:
         num_epochs:
         minibatch_size:
+        dropout: whether to use dropout regularization
+        keep_prob: keep probability when using dropout regularization
         print_cost:
 
     Returns:
 
     """
+
+    tf.reset_default_graph()
+
     (n_x, m) = X_train.shape
     n_y = Y_train.shape[0]
     seed = 0
@@ -137,33 +144,52 @@ def model(X_train, Y_train, X_test, Y_test, layer_dims=[40, 20, 6, 4, 2], learni
 
     parameters = initialize_parameters([n_x] + layer_dims + [n_y])
 
-    ZL = forward_propagation(X, parameters)
+    ZL = forward_propagation(X, parameters, dropout=dropout, keep_prob=keep_prob)
 
     cost = compute_cost(ZL, Y)
 
+    correct_prediction = tf.equal(tf.argmax(ZL), tf.argmax(Y))
+
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float32"))
+
+    # for tensorboard
+    tf.summary.scalar("cost", cost)
+    tf.summary.scalar("accuracy", accuracy)
+    for param in parameters:
+        tf.summary.tensor_summary(param, parameters[param])
+
+    summary_op = tf.summary.merge_all()
+
+    # optimizer
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
     init = tf.global_variables_initializer()
 
     with tf.Session() as sess:
         sess.run(init)
+        writer = tf.summary.FileWriter(logdir="tensorlog")
 
         for epoch in range(num_epochs):
 
             epoch_cost = 0
-            num_minibatches = int(m / minibatch_size)
+            t = 0
+            num_minibatches = int(m / minibatch_size) + 1
 
             seed += 1
 
             minibatches = random_mini_batches(X_train, Y_train, minibatch_size, seed)
 
             for minibatch in minibatches:
+                t += 1
 
                 (minibatch_X, minibatch_Y) = minibatch
 
                 _, minibatch_cost = sess.run([optimizer, cost], feed_dict={X: minibatch_X, Y: minibatch_Y})
 
                 epoch_cost += minibatch_cost / num_minibatches
+
+            summary = sess.run(summary_op, feed_dict={X:X_train, Y:Y_train})
+            writer.add_summary(summary, epoch)
 
             if print_cost and epoch % 100 == 0:
                 print("Cost after epoch %i: %f" % (epoch, epoch_cost))
@@ -174,18 +200,14 @@ def model(X_train, Y_train, X_test, Y_test, layer_dims=[40, 20, 6, 4, 2], learni
         parameters = sess.run(parameters)
         print("Parameters Saved!")
 
-        correct_prediction = tf.equal(tf.argmax(ZL), tf.argmax(Y))
-
-        accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float32"))
-
         print("Train Accuracy:", accuracy.eval({X: X_train, Y:Y_train}))
         print("Test Accuracy:", accuracy.eval({X: X_test, Y: Y_test}))
 
         return parameters, costs
 
 
-def test_model(test_ratio=0.3, layer_dims=[20, 6, 4, 2], learning_rate=0.0001, num_epochs=10000,
-               minibatch_size=32, print_cost=True):
+def test_model(test_ratio=0.3, layer_dims=[200, 100, 100, 40, 20], learning_rate=0.0001, num_epochs=5000,
+               minibatch_size=128, dropout=True, keep_prob=0.7, print_cost=True):
 
     X, Y = ds.load_digits(return_X_y=True)
     m_total = len(X)
@@ -204,7 +226,8 @@ def test_model(test_ratio=0.3, layer_dims=[20, 6, 4, 2], learning_rate=0.0001, n
     Y_test = one_hot_matrix(Y[m_train:], 10)
 
     params, costs = model(X_train, Y_train, X_test, Y_test, layer_dims=layer_dims, learning_rate=learning_rate,
-                          num_epochs=num_epochs, minibatch_size=minibatch_size, print_cost=print_cost)
+                          num_epochs=num_epochs, minibatch_size=minibatch_size, dropout=dropout, keep_prob=keep_prob,
+                          print_cost=print_cost)
 
     import matplotlib.pyplot as plt
 
