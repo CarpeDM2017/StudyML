@@ -1,4 +1,8 @@
-<style> body { font-family: "Nanumbarungothic", Consolas, sans-serif; } </style>
+<style>
+body {
+    font-family: "Nanumbarungothic", Consolas, sans-serif; 
+}
+</style>
 
 ## Session 01
 #### 사전준비와 Python 기초문법
