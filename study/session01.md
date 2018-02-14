@@ -1,124 +1,125 @@
 ## Session 01
-#### »çÀüÁØºñ¿Í Python ±âÃÊ¹®¹ý
+#### ì‚¬ì „ì¤€ë¹„ì™€ Python ê¸°ì´ˆë¬¸ë²•
 
-* GitHub °¡ÀÔ
-* GitHub Desktop ¼³Ä¡
-* Anaconda ¼³Ä¡
-* Atom IDE ¼³Ä¡
-* Python ±âÃÊ¹®¹ý ¿¬½À
+* GitHub ê°€ìž…
+* GitHub Desktop ì„¤ì¹˜
+* Anaconda ì„¤ì¹˜
+* Atom IDE ì„¤ì¹˜
+* Python ê¸°ì´ˆë¬¸ë²• ì—°ìŠµ
 
 
-1. GitHub¿¡ º»ÀÎ ÀÌ¸§°ú °°Àº ÀÌ¸§ÀÇ Æú´õ¸¦ »ý¼ºÇÕ´Ï´Ù.
-2. README.md ÆÄÀÏÀ» »ý¼ºÇØ ¾÷·ÎµåÇÕ´Ï´Ù.
-3. ´ÙÀ½ÀÇ ÄÚµå¸¦ ¿Ï¼ºÇØ session01.py·Î ¾÷·ÎµåÇÕ´Ï´Ù.
+1. GitHubì— ë³¸ì¸ ì´ë¦„ê³¼ ê°™ì€ ì´ë¦„ì˜ í´ë”ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+2. README.md íŒŒì¼ì„ ìƒì„±í•´ ì—…ë¡œë“œí•©ë‹ˆë‹¤.
+3. ë‹¤ìŒì˜ ì½”ë“œë¥¼ ì™„ì„±í•´ session01.pyë¡œ ì—…ë¡œë“œí•©ë‹ˆë‹¤.
 ```python
 num = input('Number of steps : ')
 try: num = int(num)
 except: print('Invalid input!')
 for i in range(num):
-    # ¿©±â¼­ºÎÅÍ ÀÛ¼ºÇØÁÖ½Ã¸é µË´Ï´Ù
+    # ì—¬ê¸°ì„œë¶€í„° ìž‘ì„±í•´ì£¼ì‹œë©´ ë©ë‹ˆë‹¤
 ```  
-ÄÚµå´Â °¢ ÀÔ·Â°ª¿¡ µû¶ó ´ÙÀ½ÀÇ Ãâ·Â°ªÀ» ³ªÅ¸³»¾î¾ß ÇÕ´Ï´Ù.
+ì½”ë“œëŠ” ê° ìž…ë ¥ê°’ì— ë”°ë¼ ë‹¤ìŒì˜ ì¶œë ¥ê°’ì„ ë‚˜íƒ€ë‚´ì–´ì•¼ í•©ë‹ˆë‹¤.
 <br></br>
 ![session01_11](./image/session01_11_star.png)
 <br></br>
 
-#### GitHub °¡ÀÔ
+#### GitHub ê°€ìž…
 
-[GitHub È¨ÆäÀÌÁö](https://github.com)¿¡ µé¾î°¡¼­ °¡ÀÔÇÕ´Ï´Ù.
+[GitHub í™ˆíŽ˜ì´ì§€](https://github.com)ì— ë“¤ì–´ê°€ì„œ ê°€ìž…í•©ë‹ˆë‹¤.
 <br></br>
 ![session01_01](./image/session01_01_github.png)
 <br></br>
-°¡ÀÔÇÏ½Å µÚ GitHub ¾ÆÀÌµð ¶Ç´Â ¸ÞÀÏÁÖ¼Ò¸¦ °øÀ¯ÇØÁÖ¼¼¿ä.
-GitHub¿Í ¿¬°áµÈ ¸ÞÀÏÁÖ¼Ò·Î º¸³»µå¸° [CarpeDM ÀúÀå¼Ò](https://github.com/CarpeDM2017/StudyML)¿¡ µé¾î¿À½Ã¸é ¾ÕÀ¸·Î ÁøÇàÇÒ ½ºÅÍµð ÀÚ·á¸¦ ÇÔ²² º¸½Ç ¼ö ÀÖ½À´Ï´Ù.
+ê°€ìž…í•˜ì‹  ë’¤ GitHub ì•„ì´ë”” ë˜ëŠ” ë©”ì¼ì£¼ì†Œë¥¼ ê³µìœ í•´ì£¼ì„¸ìš”.
+GitHubì™€ ì—°ê²°ëœ ë©”ì¼ì£¼ì†Œë¡œ ë³´ë‚´ë“œë¦° [CarpeDM ì €ìž¥ì†Œ](https://github.com/CarpeDM2017/StudyML)ì— ë“¤ì–´ì˜¤ì‹œë©´ ì•žìœ¼ë¡œ ì§„í–‰í•  ìŠ¤í„°ë”” ìžë£Œë¥¼ í•¨ê»˜ ë³´ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 <br></br>
 ![session01_02](./image/session01_02_studyml.png)
 <br></br>
 
-#### GitHub Desktop ¼³Ä¡
+#### GitHub Desktop ì„¤ì¹˜
 
-[GitHub Desktop](https://desktop.github.com/)Àº GitHubÀÇ ¿©·¯ ±â´ÉµéÀ» Æí¸®ÇÏ°Ô ÀÌ¿ëÇÒ ¼ö ÀÖµµ·Ï ÇØÁÖ´Â ÇÁ·Î±×·¥ÀÔ´Ï´Ù. GitHub DesktopÀ» ¼³Ä¡ÇÏ°í, ¾Õ¼­ °¡ÀÔÇÑ ¾ÆÀÌµð·Î ·Î±×ÀÎÇÏ°í³ª¸é ¾Æ·¡¿Í °°ÀÌ ¾î´À ÀúÀå¼Ò¿¡¼­ ÀÛ¾÷ÇÒ °ÍÀÎÁö¸¦ ¼±ÅÃÇÏ´Â Ã¢ÀÌ ³ª¿É´Ï´Ù. ¿ì¸®´Â ÀÌ¹Ì GitHub¿¡ µî·ÏµÈ CarpeDM ÀúÀå¼Ò¿¡¼­ ÀÛ¾÷ÇÒ ¿¹Á¤ÀÌ¹Ç·Î, "Clone a repository"¸¦ Å¬¸¯ÇØÁÖ½Ã¸é µË´Ï´Ù.
+[GitHub Desktop](https://desktop.github.com/)ì€ GitHubì˜ ì—¬ëŸ¬ ê¸°ëŠ¥ë“¤ì„ íŽ¸ë¦¬í•˜ê²Œ ì´ìš©í•  ìˆ˜ ìžˆë„ë¡ í•´ì£¼ëŠ” í”„ë¡œê·¸ëž¨ìž…ë‹ˆë‹¤. GitHub Desktopì„ ì„¤ì¹˜í•˜ê³ , ì•žì„œ ê°€ìž…í•œ ì•„ì´ë””ë¡œ ë¡œê·¸ì¸í•˜ê³ ë‚˜ë©´ ì•„ëž˜ì™€ ê°™ì´ ì–´ëŠ ì €ìž¥ì†Œì—ì„œ ìž‘ì—…í•  ê²ƒì¸ì§€ë¥¼ ì„ íƒí•˜ëŠ” ì°½ì´ ë‚˜ì˜µë‹ˆë‹¤. ìš°ë¦¬ëŠ” ì´ë¯¸ GitHubì— ë“±ë¡ëœ CarpeDM ì €ìž¥ì†Œì—ì„œ ìž‘ì—…í•  ì˜ˆì •ì´ë¯€ë¡œ, "Clone a repository"ë¥¼ í´ë¦­í•´ì£¼ì‹œë©´ ë©ë‹ˆë‹¤.
 <br></br>
 ![session01_03](./image/session01_03_desktop.png)
 <br></br>
-"CarpeDM2017"ÀÇ ÇÏÀ§ ÀúÀå¼ÒÀÎ "StudyML"À» ¼±ÅÃÇØÁÖ¼¼¿ä. ¾Æ·¡ Local path´Â ÇâÈÄ GitHubÀÇ ÀúÀå¼Ò¿Í µ¿±âÈ­ÇÒ ¿ì¸® ÄÄÇ»ÅÍ ³»ºÎÀÇ ÁÖ¼ÒÀÔ´Ï´Ù. Local path·Î ¼³Á¤ÇÑ Æú´õ¿¡¼­ ÆÄÀÏÀ» Ãß°¡ÇÏ°Å³ª, »èÁ¦ÇÏ°Å³ª, º¯°æÇÏ´Â °æ¿ì GitHub ÀúÀå¼Ò¿¡¼­µµ µ¿ÀÏÇÑ ÀÛ¾÷À» ¼öÇàÇÏ°Ô µË´Ï´Ù.
+"CarpeDM2017"ì˜ í•˜ìœ„ ì €ìž¥ì†Œì¸ "StudyML"ì„ ì„ íƒí•´ì£¼ì„¸ìš”. ì•„ëž˜ Local pathëŠ” í–¥í›„ GitHubì˜ ì €ìž¥ì†Œì™€ ë™ê¸°í™”í•  ìš°ë¦¬ ì»´í“¨í„° ë‚´ë¶€ì˜ ì£¼ì†Œìž…ë‹ˆë‹¤. Local pathë¡œ ì„¤ì •í•œ í´ë”ì—ì„œ íŒŒì¼ì„ ì¶”ê°€í•˜ê±°ë‚˜, ì‚­ì œí•˜ê±°ë‚˜, ë³€ê²½í•˜ëŠ” ê²½ìš° GitHub ì €ìž¥ì†Œì—ì„œë„ ë™ì¼í•œ ìž‘ì—…ì„ ìˆ˜í–‰í•˜ê²Œ ë©ë‹ˆë‹¤.
 <br></br>
 ![session01_04](./image/session01_04_desktop.png)
 <br></br>
 
-#### Anaconda ¼³Ä¡
+#### Anaconda ì„¤ì¹˜
 
-[Anaconda](https://www.anaconda.com/download/)´Â Python ¾ð¾î¿Í ´õºÒ¾î µ¥ÀÌÅÍ °úÇÐ ºÐ¾ß¿¡¼­ ÀÚÁÖ »ç¿ëÇÏ´Â ¶óÀÌºê·¯¸®µéÀ» ÇÔ²² ¼³Ä¡ÇØÁÖ°í, °ü¸®ÇØÁÖ´Â µµ±¸ÀÔ´Ï´Ù. ¾Æ·¡ ±×¸²°ú °°ÀÌ Python 3.x versionÀ» ¼³Ä¡ÇØÁÖ¼¼¿ä.
+[Anaconda](https://www.anaconda.com/download/)ëŠ” Python ì–¸ì–´ì™€ ë”ë¶ˆì–´ ë°ì´í„° ê³¼í•™ ë¶„ì•¼ì—ì„œ ìžì£¼ ì‚¬ìš©í•˜ëŠ” ë¼ì´ë¸ŒëŸ¬ë¦¬ë“¤ì„ í•¨ê»˜ ì„¤ì¹˜í•´ì£¼ê³ , ê´€ë¦¬í•´ì£¼ëŠ” ë„êµ¬ìž…ë‹ˆë‹¤. ì•„ëž˜ ê·¸ë¦¼ê³¼ ê°™ì´ Python 3.x versionì„ ì„¤ì¹˜í•´ì£¼ì„¸ìš”.
 <br></br>
 ![session01_05](./image/session01_05_anaconda.png)
 <br></br>
-¼³Ä¡°¡ ³¡³ª°í ³ª¸é °¢ ¿î¿µÃ¼Á¦¿¡ ¸Â´Â ¸í·É ÇÁ·ÒÇÁÆ®¸¦ ÀÌ¿ëÇØ PythonÀÌ Á¦´ë·Î ¼³Ä¡µÇ¾ú´ÂÁö È®ÀÎÇØº¾½Ã´Ù. Windows¶ó¸é ¸í·É ÇÁ·ÒÇÁÆ®(command line prompt), OS X¶ó¸é ÅÍ¹Ì³Î(terminal), Linux¶ó¸é ¹è½Ã ½©(BASH)¿¡¼­ "python" ¸í·É¾î¸¦ ½ÇÇàÇØº¾½Ã´Ù.
+ì„¤ì¹˜ê°€ ëë‚˜ê³  ë‚˜ë©´ ê° ìš´ì˜ì²´ì œì— ë§žëŠ” ëª…ë ¹ í”„ë¡¬í”„íŠ¸ë¥¼ ì´ìš©í•´ Pythonì´ ì œëŒ€ë¡œ ì„¤ì¹˜ë˜ì—ˆëŠ”ì§€ í™•ì¸í•´ë´…ì‹œë‹¤. Windowsë¼ë©´ ëª…ë ¹ í”„ë¡¬í”„íŠ¸(command line prompt), OS Xë¼ë©´ í„°ë¯¸ë„(terminal), Linuxë¼ë©´ ë°°ì‹œ ì‰˜(BASH)ì—ì„œ "python" ëª…ë ¹ì–´ë¥¼ ì‹¤í–‰í•´ë´…ì‹œë‹¤.
 <br></br>
 ![session01_06](./image/session01_06_python.png)
 <br></br>
-¿Ã¹Ù¸£°Ô ¼³Ä¡µÇ¾ú´Ù¸é, "python" ¸í·É¾î¸¦ ½ÇÇàÇÏ¿´À» ¶§ À§ ±×¸²°ú °°ÀÌ "Python 3.x.x" ¹öÀü°ú ±× ¿·¿¡ "Anaconda, Inc."¶ó´Â ±Û¾¾°¡ Ãâ·ÂµÇ¾î¾ß ÇÕ´Ï´Ù.
+ì˜¬ë°”ë¥´ê²Œ ì„¤ì¹˜ë˜ì—ˆë‹¤ë©´, "python" ëª…ë ¹ì–´ë¥¼ ì‹¤í–‰í•˜ì˜€ì„ ë•Œ ìœ„ ê·¸ë¦¼ê³¼ ê°™ì´ "Python 3.x.x" ë²„ì „ê³¼ ê·¸ ì˜†ì— "Anaconda, Inc."ë¼ëŠ” ê¸€ì”¨ê°€ ì¶œë ¥ë˜ì–´ì•¼ í•©ë‹ˆë‹¤.
 
-#### Atom IDE ¼³Ä¡
+#### Atom IDE ì„¤ì¹˜
 
-¸¶Áö¸·À¸·Î [Atom](https://atom.io/)À» ¼³Ä¡ÇØ º»°ÝÀûÀ¸·Î Python °øºÎ¸¦ ½ÃÀÛÇØº¾½Ã´Ù. AtomÀº ´Ù¾çÇÑ ¿î¿µÃ¼Á¦¿¡¼­ ÀÌ¿ëÇÒ ¼ö ÀÖ°í, ´Ù¾çÇÑ ÇÁ·Î±×·¡¹Ö ¾ð¾î¸¦ Áö¿øÇÏ¸ç, ÀÌ¿ëÀÚ¿¡ µû¶ó ½±°Ô ±¸¼º¿ä¼Ò¸¦ º¯°æÇÒ ¼ö ÀÖ´Â ÅØ½ºÆ® ÆíÁý±âÀÔ´Ï´Ù. ¼³Ä¡°¡ ³¡³ª¸é GitHub Desktop¿¡¼­ CarpeDM ÀúÀå¼Ò¸¦ AtomÀ¸·Î ¿­¾îº¾½Ã´Ù.
+ë§ˆì§€ë§‰ìœ¼ë¡œ [Atom](https://atom.io/)ì„ ì„¤ì¹˜í•´ ë³¸ê²©ì ìœ¼ë¡œ Python ê³µë¶€ë¥¼ ì‹œìž‘í•´ë´…ì‹œë‹¤. Atomì€ ë‹¤ì–‘í•œ ìš´ì˜ì²´ì œì—ì„œ ì´ìš©í•  ìˆ˜ ìžˆê³ , ë‹¤ì–‘í•œ í”„ë¡œê·¸ëž˜ë° ì–¸ì–´ë¥¼ ì§€ì›í•˜ë©°, ì´ìš©ìžì— ë”°ë¼ ì‰½ê²Œ êµ¬ì„±ìš”ì†Œë¥¼ ë³€ê²½í•  ìˆ˜ ìžˆëŠ” í…ìŠ¤íŠ¸ íŽ¸ì§‘ê¸°ìž…ë‹ˆë‹¤. ì„¤ì¹˜ê°€ ëë‚˜ë©´ GitHub Desktopì—ì„œ CarpeDM ì €ìž¥ì†Œë¥¼ Atomìœ¼ë¡œ ì—´ì–´ë´…ì‹œë‹¤.
 <br></br>
 ![session01_07](./image/session01_07_atom.png)
 <br></br>
-GitHub¿¡ ÀÖ´Â ÀúÀå¼Ò¿¡ µé¾î°¥ ¶§ ³ª¿À´Â °øÁö±ÛÀº °¡Àå »óÀ§ Æú´õ¿¡ ÀÖ´Â README.md°í, ÇöÀç ÀÌ ¹®¼­´Â study Æú´õ ¾È¿¡ ÀÖ´Â session01.mdÀÔ´Ï´Ù. AtomÀ¸·Î ÇÑ¹ø È®ÀÎÇØº¾½Ã´Ù.
+GitHubì— ìžˆëŠ” ì €ìž¥ì†Œì— ë“¤ì–´ê°ˆ ë•Œ ë‚˜ì˜¤ëŠ” ê³µì§€ê¸€ì€ ê°€ìž¥ ìƒìœ„ í´ë”ì— ìžˆëŠ” README.mdê³ , í˜„ìž¬ ì´ ë¬¸ì„œëŠ” study í´ë” ì•ˆì— ìžˆëŠ” session01.mdìž…ë‹ˆë‹¤. Atomìœ¼ë¡œ í•œë²ˆ í™•ì¸í•´ë´…ì‹œë‹¤.
 
-Áö±ÝºÎÅÍ ÀÛ¼ºÇÒ Python ÆÄÀÏÀ» ÀúÀåÇÏ±â À§ÇØ study Æú´õ ¾Æ·¡¿¡ ÀÚ½ÅÀÇ ÀÌ¸§°ú °°Àº ÀÌ¸§À» °¡Áö´Â Æú´õ¸¦ »ý¼ºÇØº¾½Ã´Ù. ±× Æú´õ ¾È¿¡ °¡Àå »óÀ§ Æú´õ¿¡ ÀÖ´Â README.md¸¦ º¹»çÇØ, Á¦¸ñÀ» Á¦¿ÜÇÏ°í ÀüºÎ Áö¿î µÚ ¾Æ·¡¿Í °°Àº ÇüÅÂ·Î ¸¸µé¾îº¾½Ã´Ù. ¿¹½Ã¸¦ À§ÇØ ÀûÀº °ÍÀÌ´Ï (ÀÌÇÏ ¿©¹é) ºÎºÐÀº ¿©¹éÀ¸·Î µÖÁÖ½Ã¸é µÇ°Ú½À´Ï´Ù.
+ì§€ê¸ˆë¶€í„° ìž‘ì„±í•  Python íŒŒì¼ì„ ì €ìž¥í•˜ê¸° ìœ„í•´ study í´ë” ì•„ëž˜ì— ìžì‹ ì˜ ì´ë¦„ê³¼ ê°™ì€ ì´ë¦„ì„ ê°€ì§€ëŠ” í´ë”ë¥¼ ìƒì„±í•´ë´…ì‹œë‹¤. ê·¸ í´ë” ì•ˆì— ê°€ìž¥ ìƒìœ„ í´ë”ì— ìžˆëŠ” README.mdë¥¼ ë³µì‚¬í•´, ì œëª©ì„ ì œì™¸í•˜ê³  ì „ë¶€ ì§€ìš´ ë’¤ ì•„ëž˜ì™€ ê°™ì€ í˜•íƒœë¡œ ë§Œë“¤ì–´ë´…ì‹œë‹¤. ì˜ˆì‹œë¥¼ ìœ„í•´ ì ì€ ê²ƒì´ë‹ˆ (ì´í•˜ ì—¬ë°±) ë¶€ë¶„ì€ ì—¬ë°±ìœ¼ë¡œ ë‘¬ì£¼ì‹œë©´ ë˜ê² ìŠµë‹ˆë‹¤.
 <br></br>
 ![session01_08](./image/session01_08_folder.png)
 <br></br>
-¹æ±Ý »ý¼ºÇÑ Æú´õ¸¦ GitHub ÀúÀå¼Ò ³»¿¡¼­µµ »ý¼ºÇÏ±â À§ÇØ¼­´Â ÀÛ¾÷ÇÑ ³»¿ëÀ» GitHub DesktopÀ» ÀÌ¿ëÇØ ÀúÀå¼Ò·Î Àü¼ÛÇØÁÖ¾î¾ß ÇÕ´Ï´Ù. ÀÌ¸¦ À§ÇØ¼­´Â ¿ì¼± Ã¹Â°, ÀúÀå¼ÒÀÇ À§Ä¡¿Í ºê·£Ä¡¸¦ È®ÀÎÇØ¾ß ÇÕ´Ï´Ù. ÇöÀç ¿ì¸®°¡ ÀÌ¿ëÇÏ°í ÀÖ´Â ÀúÀå¼Ò´Â "StudyML", ºê·£Ä¡´Â "CarpeDM2018"ÀÔ´Ï´Ù. µÑÂ°·Î´Â ¼öÁ¤ÇÑ ³»¿ëÀ» Àü¼ÛÇÏ±â Àü, ÀúÀå¼ÒÀÇ ³»¿ëÀ» ÃÖ½Å ¹öÀüÀ¸·Î °»½ÅÇØµÎ¾î¾ß ÇÕ´Ï´Ù. »ó´Ü ¸Ç ¿À¸¥ÂÊÀÇ "Fetch origin"À» ´­·¯ ÀúÀå¼Ò¸¦ °»½ÅÇÕ½Ã´Ù.
+ë°©ê¸ˆ ìƒì„±í•œ í´ë”ë¥¼ GitHub ì €ìž¥ì†Œ ë‚´ì—ì„œë„ ìƒì„±í•˜ê¸° ìœ„í•´ì„œëŠ” ìž‘ì—…í•œ ë‚´ìš©ì„ GitHub Desktopì„ ì´ìš©í•´ ì €ìž¥ì†Œë¡œ ì „ì†¡í•´ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤. ì´ë¥¼ ìœ„í•´ì„œëŠ” ìš°ì„  ì²«ì§¸, ì €ìž¥ì†Œì˜ ìœ„ì¹˜ì™€ ë¸Œëžœì¹˜ë¥¼ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤. í˜„ìž¬ ìš°ë¦¬ê°€ ì´ìš©í•˜ê³  ìžˆëŠ” ì €ìž¥ì†ŒëŠ” "StudyML", ë¸Œëžœì¹˜ëŠ” "CarpeDM2018"ìž…ë‹ˆë‹¤. ë‘˜ì§¸ë¡œëŠ” ìˆ˜ì •í•œ ë‚´ìš©ì„ ì „ì†¡í•˜ê¸° ì „, ì €ìž¥ì†Œì˜ ë‚´ìš©ì„ ìµœì‹  ë²„ì „ìœ¼ë¡œ ê°±ì‹ í•´ë‘ì–´ì•¼ í•©ë‹ˆë‹¤. ìƒë‹¨ ë§¨ ì˜¤ë¥¸ìª½ì˜ "Fetch origin"ì„ ëˆŒëŸ¬ ì €ìž¥ì†Œë¥¼ ê°±ì‹ í•©ì‹œë‹¤.
 <br></br>
 ![session01_09](./image/session01_09_folder.png)
 <br></br>
-¼ÂÂ°·Î ¿ÞÂÊ ÇÏ´Ü¿¡ ÀÚ½ÅÀÌ ÀÛ¾÷ÇÑ ³»¿ë¿¡ ´ëÇÑ °£·«ÇÑ Á¦¸ñ°ú ¼³¸íÀ» ÀûÀº µÚ, "commit to CarpeDM2018"À» ´­·¯ ÀÌ¸¦ µî·ÏÇÕ½Ã´Ù. ¸¶Áö¸·À¸·Î "Push origin"À» ´­·¯ Àü¼ÛÇÏ¸é µË´Ï´Ù.
+ì…‹ì§¸ë¡œ ì™¼ìª½ í•˜ë‹¨ì— ìžì‹ ì´ ìž‘ì—…í•œ ë‚´ìš©ì— ëŒ€í•œ ê°„ëžµí•œ ì œëª©ê³¼ ì„¤ëª…ì„ ì ì€ ë’¤, "commit to CarpeDM2018"ì„ ëˆŒëŸ¬ ì´ë¥¼ ë“±ë¡í•©ì‹œë‹¤. ë§ˆì§€ë§‰ìœ¼ë¡œ "Push origin"ì„ ëˆŒëŸ¬ ì „ì†¡í•˜ë©´ ë©ë‹ˆë‹¤.
 <br></br>
 ![session01_10](./image/session01_10_folder.png)
 <br></br>
 
-#### Python ±âÃÊ¹®¹ý ¿¬½À
+#### Python ê¸°ì´ˆë¬¸ë²• ì—°ìŠµ
 
-* ##### ÀÚ·áÇü°ú º¯¼ö
-<b>ÀÚ·áÇü</b>ÀÌ¶õ ÇÁ·Î±×·¡¹ÖÀÇ ÇÙ½É ´ÜÀ§·Î, Python¿¡¼­ ÁÖ·Î ÀÌ¿ëÇÏ´Â ÀÚ·áÇüÀº ´ÙÀ½°ú °°½À´Ï´Ù.
+* ##### ìžë£Œí˜•ê³¼ ë³€ìˆ˜
+<b>ìžë£Œí˜•</b>ì´ëž€ í”„ë¡œê·¸ëž˜ë°ì˜ í•µì‹¬ ë‹¨ìœ„ë¡œ, Pythonì—ì„œ ì£¼ë¡œ ì´ìš©í•˜ëŠ” ìžë£Œí˜•ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
 <table>
     <tr>
-        <td> <b>³í¸®(bool) </td>
-        <td> Âü(1) ¶Ç´Â °ÅÁþ(0) </td>
+        <td> <b>ë…¼ë¦¬(bool) </td>
+        <td> ì°¸(1) ë˜ëŠ” ê±°ì§“(0) </td>
     </tr>
     <tr>
-        <td> <b>¼ýÀÚ(int, float) </td>
-        <td> Á¤¼ö ¶Ç´Â ½Ç¼ö </td>
+        <td> <b>ìˆ«ìž(int, float) </td>
+        <td> ì •ìˆ˜ ë˜ëŠ” ì‹¤ìˆ˜ </td>
     </tr>
     <tr>
-        <td> <b>¹®ÀÚ¿­(str) </td>
-        <td> ´Ü¾î, ¹®ÀÚµéÀÇ ÁýÇÕ </td>
+        <td> <b>ë¬¸ìžì—´(str) </td>
+        <td> ë‹¨ì–´, ë¬¸ìžë“¤ì˜ ì§‘í•© </td>
     </tr>
     <tr>
-        <td> <b>¸®½ºÆ®(list) </td>
+        <td> <b>ë¦¬ìŠ¤íŠ¸(list) </td>
         <td> [list1, list2, list3, list4] </td>
     </tr>
     <tr>
-        <td> <b>Æ©ÇÃ(tuple) </td>
+        <td> <b>íŠœí”Œ(tuple) </td>
         <td> (tuple1, tuple2, tuple3) </td>
     </tr>
     <tr>
-        <td> <b>µñ¼Å³Ê¸®(dict) </td>
+        <td> <b>ë”•ì…”ë„ˆë¦¬(dict) </td>
         <td> {key1 : value1, key2 : value2} </td>
     </tr>
     <tr>
-        <td> <b>ÁýÇÕ(set) </td>
+        <td> <b>ì§‘í•©(set) </td>
         <td> {set1, set2, set3, set4} </td>
     </tr>
     <tr>
-        <td> <b>¾øÀ½(None) </td>
-        <td> ±× ¾î¶² ÀÚ·áÇüµµ ¾Æ´Ñ °æ¿ì </td>
+        <td> <b>ì—†ìŒ(None) </td>
+        <td> ê·¸ ì–´ë–¤ ìžë£Œí˜•ë„ ì•„ë‹Œ ê²½ìš° </td>
     </tr>
 </table>
 
-    <b>º¯¼ö</b>¶õ À§¿Í °°Àº ÀÚ·áÇüÀÇ °ªÀ» ÀúÀåÇÏ´Â °ø°£ÀÔ´Ï´Ù. º¯¼ö¿¡ ÀúÀåµÇ´Â °ªÀº ´ëÀÔ ¿¬»êÀÚ(=)¸¦ ÅëÇØ Á¤ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+    <b>ë³€ìˆ˜</b>ëž€ ìœ„ì™€ ê°™ì€ ìžë£Œí˜•ì˜ ê°’ì„ ì €ìž¥í•˜ëŠ” ê³µê°„ìž…ë‹ˆë‹¤. ë³€ìˆ˜ì— ì €ìž¥ë˜ëŠ” ê°’ì€ ëŒ€ìž… ì—°ì‚°ìž(=)ë¥¼ í†µí•´ ì •í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+    
     ```python
     a = True
     b = 3.14
@@ -133,23 +134,24 @@ GitHub¿¡ ÀÖ´Â ÀúÀå¼Ò¿¡ µé¾î°¥ ¶§ ³ª¿À´Â °øÁö±ÛÀº °¡Àå »óÀ§ Æú´õ¿¡ ÀÖ´Â README.md
     print(c)  # 4.14
     print(c is a + b)   # False
     ```
-    À§ ÄÚµå¿¡¼­ True¿Í 3.14´Â °¢°¢ ³í¸®, ¼ýÀÚ ÀÚ·áÇüÀÌ°í a¿Í b´Â ÀÌ °ªÀ» ÀúÀåÇØ, ÀÌÈÄÀÇ ¿¬»ê¿¡ È°¿ëÇÒ ¼ö ÀÖµµ·Ï ÇØÁÖ´Â º¯¼öÀÔ´Ï´Ù. c ¶ÇÇÑ ¼ýÀÚ ÀÚ·áÇüÀ» ÀúÀåÇÑ º¯¼ö°¡ µË´Ï´Ù.
+    
+    ìœ„ ì½”ë“œì—ì„œ Trueì™€ 3.14ëŠ” ê°ê° ë…¼ë¦¬, ìˆ«ìž ìžë£Œí˜•ì´ê³  aì™€ bëŠ” ì´ ê°’ì„ ì €ìž¥í•´, ì´í›„ì˜ ì—°ì‚°ì— í™œìš©í•  ìˆ˜ ìžˆë„ë¡ í•´ì£¼ëŠ” ë³€ìˆ˜ìž…ë‹ˆë‹¤. c ë˜í•œ ìˆ«ìž ìžë£Œí˜•ì„ ì €ìž¥í•œ ë³€ìˆ˜ê°€ ë©ë‹ˆë‹¤.
 
-* ##### Á¶°Ç¹®°ú ¹Ýº¹¹®
-    ¿ì¸®°¡ ÀÛ¼ºÇÑ ÄÚµå´Â ÀÏ¹ÝÀûÀ¸·Î À§¿¡¼­ºÎÅÍ Â÷·Ê´ë·Î ÀÛµ¿ÇÕ´Ï´Ù. ¾Õ¼± ÄÚµå¿¡¼­ º¯¼ö bÀÇ °ªÀº ½ÇÇàÇÒ ¶§¸¶´Ù ¾ðÁ¦³ª 3.14¿¡¼­ 0À¸·Î º¯È­ÇÏ°í, ±× ¹Ý´ë¹æÇâÀ¸·Î´Â º¯È­ÇÏÁö ¾Ê½À´Ï´Ù. ±×·¯³ª <b>Á¶°Ç¹®</b>°ú <b>¹Ýº¹¹®</b> µîÀÇ Á¦¾î¹®À» »ç¿ëÇÏ¸é ÄÚµåÀÇ ÁøÇà¼ø¼­¸¦ º¯°æÇÒ ¼ö ÀÖ½À´Ï´Ù.
+* ##### ì¡°ê±´ë¬¸ê³¼ ë°˜ë³µë¬¸
+    ìš°ë¦¬ê°€ ìž‘ì„±í•œ ì½”ë“œëŠ” ì¼ë°˜ì ìœ¼ë¡œ ìœ„ì—ì„œë¶€í„° ì°¨ë¡€ëŒ€ë¡œ ìž‘ë™í•©ë‹ˆë‹¤. ì•žì„  ì½”ë“œì—ì„œ ë³€ìˆ˜ bì˜ ê°’ì€ ì‹¤í–‰í•  ë•Œë§ˆë‹¤ ì–¸ì œë‚˜ 3.14ì—ì„œ 0ìœ¼ë¡œ ë³€í™”í•˜ê³ , ê·¸ ë°˜ëŒ€ë°©í–¥ìœ¼ë¡œëŠ” ë³€í™”í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ê·¸ëŸ¬ë‚˜ <b>ì¡°ê±´ë¬¸</b>ê³¼ <b>ë°˜ë³µë¬¸</b> ë“±ì˜ ì œì–´ë¬¸ì„ ì‚¬ìš©í•˜ë©´ ì½”ë“œì˜ ì§„í–‰ìˆœì„œë¥¼ ë³€ê²½í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-    <b>Á¶°Ç¹®</b>ÀÌ¶õ Á¤ÇØÁø Á¶°ÇÀ» ¸¸Á·ÇÒ ¶§¿¡¸¸ ¼öÇàÇÏ´Â ±¸¹®ÀÔ´Ï´Ù. ±×¸®°í <b>¹Ýº¹¹®</b>ÀÌ¶õ <b>Á¶°Ç¹®</b>°ú °áÇÕÇÏ¿©, Á¤ÇØÁø Á¶°ÇÀ» ¸¸Á·ÇÏ¸é ÁöÁ¤ÇÑ ºÎºÐÀ¸·Î ´Ù½Ã µ¹¾Æ°¡ °°Àº ³»¿ëÀ» ¼öÇàÇÏ´Â ±¸¹®À» ¶æÇÕ´Ï´Ù.
+    <b>ì¡°ê±´ë¬¸</b>ì´ëž€ ì •í•´ì§„ ì¡°ê±´ì„ ë§Œì¡±í•  ë•Œì—ë§Œ ìˆ˜í–‰í•˜ëŠ” êµ¬ë¬¸ìž…ë‹ˆë‹¤. ê·¸ë¦¬ê³  <b>ë°˜ë³µë¬¸</b>ì´ëž€ <b>ì¡°ê±´ë¬¸</b>ê³¼ ê²°í•©í•˜ì—¬, ì •í•´ì§„ ì¡°ê±´ì„ ë§Œì¡±í•˜ë©´ ì§€ì •í•œ ë¶€ë¶„ìœ¼ë¡œ ë‹¤ì‹œ ëŒì•„ê°€ ê°™ì€ ë‚´ìš©ì„ ìˆ˜í–‰í•˜ëŠ” êµ¬ë¬¸ì„ ëœ»í•©ë‹ˆë‹¤.
     ```python
     ans = None
-    # ¿©±â¼­ºÎÅÍ ¹Ýº¹¹®
+    # ì—¬ê¸°ì„œë¶€í„° ë°˜ë³µë¬¸
     while(ans == None):
-        ans = input('Ä¡Å²À» ÁÖ¹®ÇÏ½Ã°Ú½À´Ï±î? ')
-        if (ans == '¿¹'):          # Á¶°Ç¹®
-            print('¹Ý¹Ý¹«¸¹ÀÌ')
-        else:                     # Á¶°Ç¿¡ ÇØ´çµÇÁö ¾Ê´Â °æ¿ì
+        ans = input('ì¹˜í‚¨ì„ ì£¼ë¬¸í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ')
+        if (ans == 'ì˜ˆ'):          # ì¡°ê±´ë¬¸
+            print('ë°˜ë°˜ë¬´ë§Žì´')
+        else:                     # ì¡°ê±´ì— í•´ë‹¹ë˜ì§€ ì•ŠëŠ” ê²½ìš°
             ans = None
-            print('¿¹ ¶Ç´Â ¾Æ´Ï¿À·Î ´ë´äÇØÁÖ¼¼¿ä.')  
-    # ¿©±â±îÁö ¹Ýº¹¹®
-    print('Ä¡¸à')
+            print('ì˜ˆ ë˜ëŠ” ì•„ë‹ˆì˜¤ë¡œ ëŒ€ë‹µí•´ì£¼ì„¸ìš”.')  
+    # ì—¬ê¸°ê¹Œì§€ ë°˜ë³µë¬¸
+    print('ì¹˜ë©˜')
     ```
-    À§ ÄÚµå¿¡¼­ while¹®Àº ans º¯¼ö¿¡ NoneÀÌ ¾Æ´Ñ °ªÀÌ ÀúÀåµÉ ¶§±îÁö µé¿©¾²±âÇÑ ºÎºÐÀ» °è¼Ó ¹Ýº¹ÇÏ°Ô ÇÕ´Ï´Ù. ÀÌ¶§ if¹®ÀÌ ans¿¡ ÀÔ·ÂµÈ °ªÀÌ '¿¹'ÀÎÁö¸¦ È®ÀÎÇÏ°í, '¿¹'ÀÏ °æ¿ì if ¾Æ·¡ µé¿©¾²±âÇÑ ºÎºÐ, ¾Æ´Ò °æ¿ì¿£ else ¾Æ·¡ µé¿©¾²±âÇÑ ºÎºÐÀ» ¼öÇàÇÏµµ·Ï Á¦¾îÇÏ°í ÀÖ½À´Ï´Ù.
+    ìœ„ ì½”ë“œì—ì„œ whileë¬¸ì€ ans ë³€ìˆ˜ì— Noneì´ ì•„ë‹Œ ê°’ì´ ì €ìž¥ë  ë•Œê¹Œì§€ ë“¤ì—¬ì“°ê¸°í•œ ë¶€ë¶„ì„ ê³„ì† ë°˜ë³µí•˜ê²Œ í•©ë‹ˆë‹¤. ì´ë•Œ ifë¬¸ì´ ansì— ìž…ë ¥ëœ ê°’ì´ 'ì˜ˆ'ì¸ì§€ë¥¼ í™•ì¸í•˜ê³ , 'ì˜ˆ'ì¼ ê²½ìš° if ì•„ëž˜ ë“¤ì—¬ì“°ê¸°í•œ ë¶€ë¶„, ì•„ë‹ ê²½ìš°ì—” else ì•„ëž˜ ë“¤ì—¬ì“°ê¸°í•œ ë¶€ë¶„ì„ ìˆ˜í–‰í•˜ë„ë¡ ì œì–´í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
