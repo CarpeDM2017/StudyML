@@ -1,3 +1,5 @@
+<style> body { font-family: "Nanumbarungothic", Consolas, sans-serif; } </style>
+
 ## Session 01
 #### 사전준비와 Python 기초문법
 
@@ -19,9 +21,8 @@ for i in range(num):
     # 여기서부터 작성해주시면 됩니다
 ```  
 코드는 각 입력값에 따라 다음의 출력값을 나타내어야 합니다.
-<br></br>
+<br></br><center>
 ![session01_11](./image/session01_11_star.png)
-<br></br>
 
 #### GitHub 가입
 
@@ -83,7 +84,8 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
 
 * ##### 자료형과 변수
 <b>자료형</b>이란 프로그래밍의 핵심 단위로, Python에서 주로 이용하는 자료형은 다음과 같습니다.
-<table>
+
+    <table>
     <tr>
         <td> <b>논리(bool) </td>
         <td> 참(1) 또는 거짓(0) </td>
@@ -117,7 +119,9 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
         <td> 그 어떤 자료형도 아닌 경우 </td>
     </tr>
 </table>
-<b>변수</b>란 위와 같은 자료형의 값을 저장하는 공간입니다. 변수에 저장되는 값은 대입 연산자(=)를 통해 정할 수 있습니다.
+
+    <b>변수</b>란 위와 같은 자료형의 값을 저장하는 공간입니다. 변수에 저장되는 값은 대입 연산자(=)를 통해 정할 수 있습니다.
+
     ```python
     a = True
     b = 3.14
