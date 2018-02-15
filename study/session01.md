@@ -83,40 +83,16 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
 * ##### 자료형과 변수
 <b>자료형</b>이란 프로그래밍의 핵심 단위로, Python에서 주로 이용하는 자료형은 다음과 같습니다.
 
-    <table>
-    <tr>
-        <td> <b>논리(bool) </td>
-        <td> 참(1) 또는 거짓(0) </td>
-    </tr>
-    <tr>
-        <td> <b>숫자(int, float) </td>
-        <td> 정수 또는 실수 </td>
-    </tr>
-    <tr>
-        <td> <b>문자열(str) </td>
-        <td> 단어, 문자들의 집합 </td>
-    </tr>
-    <tr>
-        <td> <b>리스트(list) </td>
-        <td> [list1, list2, list3, list4] </td>
-    </tr>
-    <tr>
-        <td> <b>튜플(tuple) </td>
-        <td> (tuple1, tuple2, tuple3) </td>
-    </tr>
-    <tr>
-        <td> <b>딕셔너리(dict) </td>
-        <td> {key1 : value1, key2 : value2} </td>
-    </tr>
-    <tr>
-        <td> <b>집합(set) </td>
-        <td> {set1, set2, set3, set4} </td>
-    </tr>
-    <tr>
-        <td> <b>없음(None) </td>
-        <td> 그 어떤 자료형도 아닌 경우 </td>
-    </tr>
-</table>
+| 자료형 | 설명 |
+| --- | --- |
+| <b>논리(bool)</b> | 참(1) 또는 거짓(0) |
+| <b>숫자(int, float)</b> | 정수 또는 실수 |
+| <b>문자열(str)</b> | 단어, 문자들의 집합 |
+| <b>리스트(list)</b> | [list1, list2, list3, list4] |
+| <b>튜플(tuple)</b> | (tuple1, tuple2, tuple3) |
+| <b>딕셔너리(dict)</b> | {key1 : value1, key2 : value2} |
+| <b>집합(set)</b> | {set1, set2, set3, set4} |
+| <b>없음(None)</b> | 그 어떤 자료형도 아닌 경우 |
 
     <b>변수</b>란 위와 같은 자료형의 값을 저장하는 공간입니다. 변수에 저장되는 값은 대입 연산자(=)를 통해 정할 수 있습니다.
 
