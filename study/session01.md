@@ -97,20 +97,21 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
 
 <b>변수</b>란 위와 같은 자료형의 값을 저장하는 공간입니다. 변수에 저장되는 값은 대입 연산자(=)를 통해 정할 수 있습니다.
 
-    ```python
-    a = True
-    b = 3.14
-    print(a + b)  # 4.14
+```python
+a = True
+b = 3.14
+print(a + b)  # 4.14
 
-    c = a + b
-    print(c)  # 4.14
-    print(c is a + b)   # True
+c = a + b
+print(c)  # 4.14
+print(c is a + b)   # True
 
-    b = 0
-    print(a + b)  # 1
-    print(c)  # 4.14
-    print(c is a + b)   # False
-    ```
+b = 0
+print(a + b)  # 1
+print(c)  # 4.14
+print(c is a + b)   # False
+```
+
 위 코드에서 True와 3.14는 각각 논리, 숫자 자료형이고 a와 b는 이 값을 저장해, 이후의 연산에 활용할 수 있도록 해주는 변수입니다. c 또한 숫자 자료형을 저장한 변수가 됩니다.
 
 * ##### 조건문과 반복문
