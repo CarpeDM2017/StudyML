@@ -154,3 +154,14 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
     print('치멘')
     ```
     위 코드에서 while문은 ans 변수에 None이 아닌 값이 저장될 때까지 들여쓰기한 부분을 계속 반복하게 합니다. 이때 if문이 ans에 입력된 값이 '예'인지를 확인하고, '예'일 경우 if 아래 들여쓰기한 부분, 아닐 경우엔 else 아래 들여쓰기한 부분을 수행하도록 제어하고 있습니다.
+
+#### 참고자료
+
+* 통합 개발 환경 - 위키백과, 우리 모두의 백과사전  
+https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EA%B0%9C%EB%B0%9C_%ED%99%98%EA%B2%BD
+* [GIT] GIT이란 무엇인가, GIT에 대하여 - ECE - TUWLAB  
+https://tuwlab.com/ece/22202
+* 점프 투 파이썬 - WikiDocs  
+https://wikidocs.net/book/1
+* Learn to code | Codecademy  
+https://www.codecademy.com/
