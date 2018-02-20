@@ -15,7 +15,8 @@
 num = input('Number of steps : ')
 try: num = int(num)
 except: print('Invalid input!')
-# 여기서부터 작성해주시면 됩니다
+for i in range(num):
+    # 여기서부터 작성해주시면 됩니다
 ```  
 코드는 각 입력값에 따라 다음의 출력값을 나타내어야 합니다.
 <br></br>
