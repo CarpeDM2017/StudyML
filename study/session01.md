@@ -15,13 +15,13 @@
 num = input('Number of steps : ')
 try: num = int(num)
 except: print('Invalid input!')
-for i in range(num):
-    # 여기서부터 작성해주시면 됩니다
+# 여기서부터 작성해주시면 됩니다
 ```  
 코드는 각 입력값에 따라 다음의 출력값을 나타내어야 합니다.
 <br></br>
 ![session01_11](./image/session01_11_star.png)
 <br></br>
+
 #### GitHub 가입
 
 [GitHub 홈페이지](https://github.com)에 들어가서 가입합니다.
