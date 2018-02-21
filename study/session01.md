@@ -53,6 +53,10 @@ GitHub와 연결된 메일주소로 보내드린 [CarpeDM 저장소](https://git
 ![session01_05](./image/session01_05_anaconda.png)
 <br></br>
 설치가 끝나고 나면 각 운영체제에 맞는 명령 프롬프트를 이용해 Python이 제대로 설치되었는지 확인해봅시다. Windows라면 명령 프롬프트(command line prompt), OS X라면 터미널(terminal), Linux라면 배시 쉘(BASH)에서 "python" 명령어를 실행해봅시다.
+
+* Windows에서 명령 프롬프트 실행하기
+Ctrl+R을 누른 후 cmd를 입력하고 확인을 누르거나, 좌측 하단 검색 버튼을 눌러 '명령 프롬프트'를 입력하여 찾으면 됩니다. 
+
 <br></br>
 ![session01_06](./image/session01_06_python.png)
 <br></br>
