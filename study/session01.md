@@ -53,13 +53,12 @@ GitHub와 연결된 메일주소로 보내드린 [CarpeDM 저장소](https://git
 ![session01_05](./image/session01_05_anaconda.png)
 <br></br>
 설치가 끝나고 나면 각 운영체제에 맞는 명령 프롬프트를 이용해 Python이 제대로 설치되었는지 확인해봅시다. Windows라면 명령 프롬프트(command line prompt), OS X라면 터미널(terminal), Linux라면 배시 쉘(BASH)에서 "python" 명령어를 실행해봅시다.
-
 * Windows에서 명령 프롬프트를 실행하려면 Ctrl+R을 누른 후 cmd를 입력하고 확인을 누르거나, 좌측 하단 검색 버튼을 눌러 '명령 프롬프트'를 입력하여 찾으면 됩니다. 
 
-<br></br>
 ![session01_06](./image/session01_06_python.png)
 <br></br>
 올바르게 설치되었다면, "python" 명령어를 실행하였을 때 위 그림과 같이 "Python 3.x.x" 버전과 그 옆에 "Anaconda, Inc."라는 글씨가 출력되어야 합니다.
+<br />
 
 #### Atom IDE 설치
 
@@ -81,6 +80,17 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
 <br></br>
 ![session01_10](./image/session01_10_folder.png)
 <br></br>
+
+#### Atom에 Hydrogen 설치하기
+
+Hydrogen은 Atom에서 파이썬, R 등으로 작성된 코드를 interactive하게 실행할 수 있도록 해주는 패키지입니다.
+<br />
+Atom에서 패키지를 설치하려면, 화면 좌측 상단의 File - Settings를 선택하여, Install 탭에서 Hydrogen을 검색하면 됩니다.
+<br />
+Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/Usage/GettingStarted.html)을 참고하시면 됩니다.
+<br /><br />
+![session01_12](./image/session01_12_hydrogen.png)
+<br />
 
 #### Python 기초문법 연습
 
