@@ -1,5 +1,5 @@
 ## Session 01
-#### 사전준비와 Python 기초문법
+### 사전준비와 Python 기초문법
 
 * GitHub 가입
 * GitHub Desktop 설치
@@ -23,7 +23,7 @@ for i in range(num):
 ![session01_11](./image/session01_11_star.png)
 <br></br>
 
-#### GitHub 가입
+### GitHub 가입
 
 [GitHub 홈페이지](https://github.com)에 들어가서 가입합니다.
 <br></br>
@@ -35,7 +35,7 @@ GitHub와 연결된 메일주소로 보내드린 [CarpeDM 저장소](https://git
 ![session01_02](./image/session01_02_studyml.png)
 <br></br>
 
-#### GitHub Desktop 설치
+### GitHub Desktop 설치
 
 [GitHub Desktop](https://desktop.github.com/)은 GitHub의 여러 기능들을 편리하게 이용할 수 있도록 해주는 프로그램입니다. GitHub Desktop을 설치하고, 앞서 가입한 아이디로 로그인하고나면 아래와 같이 어느 저장소에서 작업할 것인지를 선택하는 창이 나옵니다. 우리는 이미 GitHub에 등록된 CarpeDM 저장소에서 작업할 예정이므로, "Clone a repository"를 클릭해주시면 됩니다.
 <br></br>
@@ -46,21 +46,21 @@ GitHub와 연결된 메일주소로 보내드린 [CarpeDM 저장소](https://git
 ![session01_04](./image/session01_04_desktop.png)
 <br></br>
 
-#### Anaconda 설치
+### Anaconda 설치
 
 [Anaconda](https://www.anaconda.com/download/)는 Python 언어와 더불어 데이터 과학 분야에서 자주 사용하는 라이브러리들을 함께 설치해주고, 관리해주는 도구입니다. 아래 그림과 같이 Python 3.x version을 설치해주세요.
 <br></br>
 ![session01_05](./image/session01_05_anaconda.png)
 <br></br>
 설치가 끝나고 나면 각 운영체제에 맞는 명령 프롬프트를 이용해 Python이 제대로 설치되었는지 확인해봅시다. Windows라면 명령 프롬프트(command line prompt), OS X라면 터미널(terminal), Linux라면 배시 쉘(BASH)에서 "python" 명령어를 실행해봅시다.
-* Windows에서 명령 프롬프트를 실행하려면 Ctrl+R을 누른 후 cmd를 입력하고 확인을 누르거나, 좌측 하단 검색 버튼을 눌러 '명령 프롬프트'를 입력하여 찾으면 됩니다. 
+* Windows에서 명령 프롬프트를 실행하려면 Ctrl+R을 누른 후 cmd를 입력하고 확인을 누르거나, 좌측 하단 검색 버튼을 눌러 '명령 프롬프트'를 입력하여 찾으면 됩니다.
 
 ![session01_06](./image/session01_06_python.png)
 <br></br>
 올바르게 설치되었다면, "python" 명령어를 실행하였을 때 위 그림과 같이 "Python 3.x.x" 버전과 그 옆에 "Anaconda, Inc."라는 글씨가 출력되어야 합니다.
 <br />
 
-#### Atom IDE 설치
+### Atom IDE 설치
 
 마지막으로 [Atom](https://atom.io/)을 설치해 본격적으로 Python 공부를 시작해봅시다. Atom은 다양한 운영체제에서 이용할 수 있고, 다양한 프로그래밍 언어를 지원하며, 이용자에 따라 쉽게 구성요소를 변경할 수 있는 텍스트 편집기입니다. 설치가 끝나면 GitHub Desktop에서 CarpeDM 저장소를 Atom으로 열어봅시다.
 <br></br>
@@ -81,7 +81,7 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
 ![session01_10](./image/session01_10_folder.png)
 <br></br>
 
-#### Atom에 Hydrogen 설치하기
+### Atom에 Hydrogen 설치하기
 
 Hydrogen은 Atom에서 파이썬, R 등으로 작성된 코드를 interactive하게 실행할 수 있도록 해주는 패키지입니다.
 <br />
@@ -92,9 +92,9 @@ Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/
 ![session01_12](./image/session01_12_hydrogen.png)
 <br />
 
-#### Python 기초문법 연습
+### Python 기초문법 연습
 
-* ##### 자료형과 변수
+* #### 자료형과 변수
     <b>자료형</b>이란 프로그래밍의 핵심 단위로, Python에서 주로 이용하는 자료형은 다음과 같습니다.
 
     | 자료형                  | 설명                           | 연산                     |
@@ -127,7 +127,7 @@ Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/
 
     위 코드에서 True와 3.14는 각각 논리, 숫자 자료형이고 a와 b는 이 값을 저장해, 이후의 연산에 활용할 수 있도록 해주는 변수입니다. c 또한 숫자 자료형을 저장한 변수가 됩니다.
 
-* ##### 조건문과 반복문
+* #### 조건문과 반복문
     우리가 작성한 코드는 일반적으로 위에서부터 차례대로 작동합니다. 앞선 코드에서 변수 b의 값은 실행할 때마다 언제나 3.14에서 0으로 변화하고, 그 반대방향으로는 변화하지 않습니다. 그러나 <b>조건문</b>과 <b>반복문</b> 등의 제어문을 사용하면 코드의 진행순서를 변경할 수 있습니다.
 
     <b>조건문</b>이란 정해진 조건을 만족할 때에만 수행하는 구문입니다. 그리고 <b>반복문</b>이란 <b>조건문</b>과 결합하여, 정해진 조건을 만족하면 지정한 부분으로 다시 돌아가 같은 내용을 수행하는 구문을 뜻합니다.
@@ -146,7 +146,7 @@ Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/
     ```
     위 코드에서 while문은 ans 변수에 None이 아닌 값이 저장될 때까지 들여쓰기한 부분을 계속 반복하게 합니다. 이때 if문이 ans에 입력된 값이 '예'인지를 확인하고, '예'일 경우 if 아래 들여쓰기한 부분, 아닐 경우엔 else 아래 들여쓰기한 부분을 수행하도록 제어하고 있습니다.
 
-#### 참고자료
+### 참고자료
 
 * 통합 개발 환경 - 위키백과, 우리 모두의 백과사전  
 https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EA%B0%9C%EB%B0%9C_%ED%99%98%EA%B2%BD
