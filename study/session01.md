@@ -123,11 +123,7 @@ Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/
     print(a + b)  # 1
     print(c)  # 4
     print(c == a + b)   # False
-    
-    a = 'hello '
-    b = 'python'
-    print(a+b)  # hello python
-    ```
+    ```
 
     위 코드에서 True와 3.14는 각각 논리, 숫자 자료형이고 a와 b는 이 값을 저장해, 이후의 연산에 활용할 수 있도록 해주는 변수입니다. c 또한 숫자 자료형을 저장한 변수가 됩니다.
 
@@ -138,8 +134,8 @@ Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/
     ```python
     ans = None
     # 여기서부터 반복문
-    while(ans == None):            # ans가 None일 경우 반복
-        ans = input('치킨을 주문하시겠습니까? ')
+    while(ans == None):
+        ans = input('치킨을 주문하시겠습니까? ')
         if (ans == '예'):          # 조건문
             print('반반무많이')
         else:                     # 조건에 해당되지 않는 경우
