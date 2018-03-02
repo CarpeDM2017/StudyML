@@ -80,10 +80,7 @@ GitHub에 있는 저장소에 들어갈 때 나오는 공지글은 가장 상위
 <br></br>
 ![session01_10](./image/session01_10_folder.png)
 <br></br>
-
-### Atom에 Hydrogen 설치하기
-
-Hydrogen은 Atom에서 파이썬, R 등으로 작성된 코드를 interactive하게 실행할 수 있도록 해주는 패키지입니다.
+<b>Hydrogen</b>은 Atom에서 파이썬, R 등으로 작성된 코드를 interactive하게 실행할 수 있도록 해주는 패키지입니다.
 <br />
 Atom에서 패키지를 설치하려면, 화면 좌측 상단의 File - Settings를 선택하여, Install 탭에서 Hydrogen을 검색하면 됩니다.
 <br />
@@ -93,6 +90,18 @@ Hydrogen의 사용 방법은 [이곳](https://nteract.gitbooks.io/hydrogen/docs/
 <br />
 
 ### Python 기초문법 연습
+
+* #### Hello World!
+    아래의 코드를 Atom에서 작성해 직접 실행해봅시다. Hydrogen을 설치하셨다면 Ctrl+Enter 또는 Shift+Enter를 통해 한줄씩 Python 구문을 실행해볼 수 있습니다. Atom에서 사용하는 여러 단축키는 Ctrl+Shift+P를 누른 뒤 찾고 싶은 기능을 입력하면 바로 검색해보실 수 있습니다.
+    ```Python
+    print("Hello World!")
+    1 + 1
+    1 - 2
+    2 * 4
+    3 / 5
+    True and False
+    True or False
+    ```
 
 * #### 자료형과 변수
     <b>자료형</b>이란 프로그래밍의 핵심 단위로, Python에서 주로 이용하는 자료형은 다음과 같습니다.
