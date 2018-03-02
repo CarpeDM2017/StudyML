@@ -1,15 +1,7 @@
-a = input ("what is a?")
-if (a == '0'):
-    print ("a is zero")
-else:
-    print ("a is not zero")
-
-name = "seonwoo"
-character = ["cute","pretty","smart"]
-
-for i in character :
-    print (name, 'is', i)
-
-for i in range(1,4):
-    for j in range(1,4):
-        print (10*i + j)
+num = input('Number of steps : ')
+try: num = int(num)
+except: print('Invalid input!')
+print ("Number of steps : "+ str(num) )
+for i in range(num):
+    a = " "*(num-i+1)+"*"*(i+1)
+    print(a)
