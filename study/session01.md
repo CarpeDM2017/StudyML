@@ -15,12 +15,14 @@
 num = input('Number of steps : ')
 try: num = int(num)
 except: print('Invalid input!')
-for i in range(num):
-    # 여기서부터 작성해주시면 됩니다
+# 여기서부터 작성해주시면 됩니다
 ```  
-코드는 각 입력값에 따라 다음의 출력값을 나타내어야 합니다.
+코드는 각 입력값에 따라 다음의 두 가지 경우 중 하나의 출력값을 나타내어야 합니다. 둘 중 하나를 선택해 구현해주시면 됩니다.
 <br></br>
 ![session01_11](./image/session01_11_star.png)
+<br></br>
+<br></br>
+![session01_13](./image/session01_13_star.png)
 <br></br>
 
 ### GitHub 가입
