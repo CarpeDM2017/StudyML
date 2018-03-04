@@ -4,3 +4,6 @@
 # Ignore all python cache files
 *.pyc
 *.pyo
+
+# Ignore all Mac system files
+*.DS_Store
