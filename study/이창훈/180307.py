@@ -5,6 +5,9 @@ except: print('Invalid input!')
 
 for i in range(1, num+1):
     spy=num+1-i
-    for j in range(spy):
-        print("*", end="")       
+    for j in range(spy-1):
+        print(" ", end="")
+    for k in range(i):
+        print("*", end="")
+              
     print()
