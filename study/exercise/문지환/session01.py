@@ -1,3 +1,4 @@
+# mjh
 def easy():
     num = input("Number of steps: ")
     try: num = int(num)
