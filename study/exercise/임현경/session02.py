@@ -8,7 +8,7 @@ print(data)
 mine=np.array(data)
 print(mine)
 
-mine = mine2
+mine2=mine
 
 for i in range(119):
     mine2 = np.dot(mine2, mine)
