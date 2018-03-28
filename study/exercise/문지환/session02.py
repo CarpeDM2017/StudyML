@@ -19,7 +19,7 @@ for i in range(10 * 12):
     state = np.dot(state, transition_mat)
 
 print(state)
-print('10년 뒤 가장 확률이 높은 상태는 %s입니다.' % state_dict[state.argmax()])
+print('10년 뒤 가장 확률이 높은 상태는 %s입니다.' % state_dict[state.argmax()])  # Bull
 
 print()
 print('2번 문제...\n')
