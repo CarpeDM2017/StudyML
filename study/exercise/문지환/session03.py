@@ -64,9 +64,10 @@ def Q2():
 
         print("initial value #%d" % (i+1))
         for j in range(100):
-            X = optim.train(F, X)
             if j % 10 == 0:
                 print(j, F(X))
+            X = optim.train(F, X)
+
         print('100', F(X))
         results.append((init_X, X, F(X)))
         print()
