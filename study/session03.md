@@ -89,6 +89,7 @@ F 대신 이 2차 다항식을 최소화하면 이동거리의 제곱에 비례�
 이러한 관성의 아이디어를 이용한 방법이 <b>Momentum</b> 방법입니다. 최소화하고자 하는 함수를 F라고 할 때 그 알고리즘은 다음과 같습니다.
 ```Python
 # 함수 F(.)는 주어져 있다고 가정합니다.
+# x는 n차원 벡터입니다. x.shape = (n,)
 class GradientDescent:
     def __init__(self, learning_rate=0.1):
         self.lr = learning_rate
@@ -127,6 +128,7 @@ class Momentum(GradientDescent):
 이때 Momentum 방법은 하강하는 구간이 길면 그만큼 가속도가 많이 붙기 때문에, 정작 감속해야 할 극값 주변에서도 이를 지나쳐버리고 다시는 돌아오지 못하는 상황이 발생하기도 합니다. 이에 <b>RMSProp</b> 방법은 그동안 많이 변화해온 변수에는 더 이상 가속도를 주지 않고, 지금까지 변화가 적었던 변수에 상대적으로 많은 가속도를 주고자 만들어진 방법입니다.
 ```Python
 # 함수 F(.)는 주어져 있다고 가정합니다.
+# x는 n차원 벡터입니다. x.shape = (n,)
 import numpy as np
 
 
