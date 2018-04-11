@@ -1,9 +1,2 @@
-# Ignore all files in Intelij Configuration Folder
-.idea/
 
-# Ignore all python cache files
-*.pyc
-*.pyo
-
-# Ignore all Mac system files
-*.DS_Store
+study/exercise/이수경/session1.py
