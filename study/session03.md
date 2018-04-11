@@ -103,7 +103,7 @@ class GradientDescent:
         dim = x.shape[0]
         grad = np.zeros(x.shape)
         eps = np.zeros(x.shape)
-        for i in range(len(dim)):
+        for i in range(dim):
             eps[i] = self.eps
             grad[i] = (F(x+eps) - F(x))/self.eps
             eps[i] = 0
