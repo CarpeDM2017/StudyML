@@ -75,3 +75,9 @@ def Q2():
     for i in range(len(results)):
         result = results[i]
         print('#%d' % (i+1), 'initial X:', result[0], 'final X:', result[1], 'F(X):', result[2])
+
+
+if __name__ == '__main__':
+    Q2()
+
+    
