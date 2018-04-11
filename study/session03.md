@@ -18,7 +18,6 @@
 <br></br>
 
 
-
 ### 미분과 최적화
 
 우리는 <b>미분</b>을 통해 주어진 지점에서의 기울기를 계산할 수 있습니다. 이는 미분가능한 함수에서 최대값과 최소값을 찾는데 매우 중요한 역할을 하는데요, (경계값을 제외하면) 기울기가 0인 지점에서 언제나 최대값과 최소값이 나타나기 때문입니다. 함수 f가 실수 x에 대해 두번 미분가능한 n차원 실가함수라고 할때, x가 최소값의 후보가 될 조건은 다음의 두가지입니다.
@@ -97,7 +96,13 @@ class GradientDescent:
 
     def train(F, x):
         # 만약 미분의 형태를 이미 알고 있는 경우 바로 미분계수를 넣으면 됩니다
-        grad = (F(x+self.eps) - F(x))/self.eps
+        dim = x.shape[0]
+        grad = np.zeros(x.shape)
+        eps = np.zeros(x.shape)
+        for i in range(len(dim)):
+            eps[i] = self.eps
+            grad[i] = (F(x+eps) - F(x))/self.eps
+            eps[i] = 0
         x = x - self.lr*grad
         return x
 
@@ -108,7 +113,13 @@ class Momentum(GradientDescent):
         self.velocity = 0
 
     def train(F, x):
-        grad = (F(x+self.eps) - F(x))/self.eps
+        dim = x.shape[0]
+        grad = np.zeros(x.shape)
+        eps = np.zeros(x.shape)
+        for i in range(len(dim)):
+            eps[i] = self.eps
+            grad[i] = (F(x+eps) - F(x))/self.eps
+            eps[i] = 0
         self.velocity = self.momentum*self.velocity + self.lr*grad
         x = x - self.velocity
         return x
@@ -125,7 +136,13 @@ class RMSProp(GradientDescent):
         self.rms = 0
 
     def train(F, x):
-        grad = (F(x+self.eps) - F(x))/self.eps
+        dim = x.shape[0]
+        grad = np.zeros(x.shape)
+        eps = np.zeros(x.shape)
+        for i in range(len(dim)):
+            eps[i] = self.eps
+            grad[i] = (F(x+eps) - F(x))/self.eps
+            eps[i] = 0
         self.rms = self.momentum*self.rms + (1-self.momentum)*np.square(grad)
         x = x - self.lr*grad/np.sqrt(self.rms + self.eps)
         return x
