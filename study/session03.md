@@ -90,12 +90,15 @@ F 대신 이 2차 다항식을 최소화하면 이동거리의 제곱에 비례�
 ```Python
 # 함수 F(.)는 주어져 있다고 가정합니다.
 # x는 n차원 벡터입니다. x.shape = (n,)
+import numpy as np
+
+
 class GradientDescent:
     def __init__(self, learning_rate=0.1):
         self.lr = learning_rate
         self.eps = 1e-3
 
-    def train(F, x):
+    def train(self, F, x):
         # 만약 미분의 형태를 이미 알고 있는 경우 바로 미분계수를 넣으면 됩니다
         dim = x.shape[0]
         grad = np.zeros(x.shape)
@@ -109,15 +112,16 @@ class GradientDescent:
 
 
 class Momentum(GradientDescent):
-    def __init__(self, momentum=0.9):
+    def __init__(self, learning_rate=0.1, momentum=0.9):
+        super(Momentum, self).__init__(learning_rate)
         self.momentum = momentum
         self.velocity = 0
 
-    def train(F, x):
+    def train(self, F, x):
         dim = x.shape[0]
         grad = np.zeros(x.shape)
         eps = np.zeros(x.shape)
-        for i in range(len(dim)):
+        for i in range(dim):
             eps[i] = self.eps
             grad[i] = (F(x+eps) - F(x))/self.eps
             eps[i] = 0
@@ -133,15 +137,16 @@ import numpy as np
 
 
 class RMSProp(GradientDescent):
-    def __init__(self, momentum=0.9):
+    def __init__(self, learning_rate=0.1, momentum=0.9):
+        super(RMSProp, self).__init__(learning_rate)
         self.momentum = momentum
         self.rms = 0
 
-    def train(F, x):
+    def train(self, F, x):
         dim = x.shape[0]
         grad = np.zeros(x.shape)
         eps = np.zeros(x.shape)
-        for i in range(len(dim)):
+        for i in range(dim):
             eps[i] = self.eps
             grad[i] = (F(x+eps) - F(x))/self.eps
             eps[i] = 0
