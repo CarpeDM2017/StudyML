@@ -1,2 +1,7 @@
-
+data/
+notebooks/
+experiments/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store/
 study/exercise/이수경/session1.py
