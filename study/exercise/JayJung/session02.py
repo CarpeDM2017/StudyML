@@ -26,8 +26,9 @@ print(Answer2)
 # now plotting
 t1 = np.arange(0, 13, 1)
 t2 = np.arange(0, 1, 0.001)
-fig = plt.figure()
-fig.suptitle("Not in Stagnation n months later", size=15, y=1.0)
-ax1 = plt.subplot(111)
-ax1.plot(t1, np.transpose(Answer2))
+
+fig = plt.subplot(111)
+fig.plot(t1, np.transpose(Answer2))
+plt.title('Not in Stagnation n months later')
+plt.xlabel('Months passed')
 plt.show()
