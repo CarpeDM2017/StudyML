@@ -7,11 +7,17 @@
 * Scikit-learn 패키지
 
 
-1. 작성중!  
-    N(0,1)에서 무작위로 생성한 X, Y에 대해  
-    Y = X1 + 2\*X2 + (X1+X3)\*X3 + X1*X4 + epsilon      
-    이런 형태의 식으로 Y를 생성하고  
-    Y의 식 형태를 맞춰보기  
+1. 다음과 같이 pickle 패키지를 통해 X, Y 데이터를 불러옵시다. X, Y 데이터는 session04.pkl 파일에 딕셔너리 형태로 들어가있습니다.
+  ```Python
+  import pickle
+
+  path = '../../session04.pkl'     # session04.pkl이 있는 경로를 넣어주세요
+  with open(path, 'rb') as f:
+      data = pickle.load(f)
+  X = data['X']
+  Y = data['Y']
+  ```
+  scikit-learn의 SGDRegressor 클래스를 이용해 Y와 X의 관계를 밝혀내봅시다! session04.py에 각 X열이 가지는 회귀계수와 모형의 R-squared를 출력하는 코드를 적어주세요.
 
 
 ### 오차함수
@@ -44,36 +50,89 @@
 
 ### 선형회귀
 
-선형회귀란 X1, X2, X3, ... 등등의 변수를 통해 Y 변수를 예측하는 모형임  
-(수식 & 평면모양 그림)  
-선형회귀 모형의 모수는 X 옆에 달린 베타임  
-이때 오차함수를 Lp 거리로 정의하면 epsilon을 최소화함으로써 학습 가능 (Least Squares)
-한편 epsilon에 대한 확률분포를 가정하고, 이에 대한 가능도함수를 최대화함으로써도 학습 가능 (OLS)
-이때 epsilon의 확률분포도 모수를 추가해 정의할 수 있다 (GLS)
+
+![session04_06](./image/session04_06_linear.png)
+<br></br>
+![session04_07](./image/session04_07_linear.png)
+<br></br>
+선형회귀란 위 수식과 같이 변수들의 선형결합이 상수항을 이루는 모형을 말합니다. 이 모형의 모수는 각 변수 앞에 붙은 비례상수인 <b>회귀계수</b>들과 <b>오차항</b> epsilon의 형태입니다. 학습을 마치고 나면 각 비례상수의 부호와 크기를 통해 각 변수의 역할 및 중요도를 쉽게 해석할 수 있어 경제학과 같은 사회과학 분야에서 많이 이용되고 있는 모형입니다. 한편 선형회귀 모형은 변수간의 관계가 선형적이라고 가정하므로 만일 변수간 관계가 비선형적일 경우 모형의 적합이 제대로 이루어질 수 없습니다.
+
+여기서 오차항이란 선형회귀 모형에서 제시한 선형결합과 실제 관측값이 얼마나 떨어져있는지를 나타내주는 변수입니다. 우리는 선형회귀 모형을 사용할 때 한 변수 Y가 다른 변수들 X와 어떤 관계를 맺고 있는지를 알아봄으로써, Y의 값을 각각의 특정한 X에 대해 예측해보고자 합니다. 따라서 주로 우리가 X를 통해 예측한 Y(Yhat)와 실제 관측한 Y 간의 차이를 계산하여 이를 오차항으로 나타냅니다.
+
+오차함수를 만약 Lp 거리로 정의한다면 원점으로부터 오차항 epsilon의 Lp 거리를 최소화함으로써 이 선형회귀모형을 학습시킬 수 있습니다. 한편 오차함수를 오차항의 분포에 대한 가능도함수로 정의한다면 우리는 이 가능도함수를 최대화함으로써 학습시킬 수 있겠죠!
+<br></br>
+![session04_08](./image/session04_08_normal.png)
+<br></br>
+오차항의 분포로 가장 많이 이용되는 확률분포는 바로 <b>정규분포</b>입니다. 정규분포는 평균과 분산, 2가지 모수를 가지고 있는 확률분포로, 모수의 개수는 n차원 정규분포의 경우 총 평균이 n개, 분산이 nxn개로 n(n+1)개입니다. 이때 선형회귀 모형의 오차항의 경우 평균항이 전부 모형의 상수항 안에 포함되므로 분산 n^2개만을 정의해주면 오차함수인 가능도함수를 계산해낼 수 있어요.
+
+오차항의 분포를 평균이 0, 분산이 1인 정규분포로 가정할 때 이 선형회귀모형을 Ordinary Least Squares라고 하고, 평균이 0이지만 분산이 변수별로 다양한 형태를 가진다고 할 때 이를 Generalized Least Squares라고 합니다.
 
 
 ### 정규화
 
-이때 만일 설명변수의 개수가 무지무지 많아서 이중 가장 중요한 것만 쓰고 싶을 때,  
-또는 모든 설명변수가 최대한 고르게 쓰였으면 좋겠을 때 등  
-오차함수에 제약식을 추가하고 싶을 때가 있음  
-이때는 저번에 언급한대로 라그랑지 승수법을 쓴다  
-제약식에서의 상수항을 정하면 라그랑지 승수의 크기도 자연스럽게 정해진다 (람다)  
-따라서 처음부터 그 람다값을 앞에 붙여줘도 똑같음잼  
+이제 지난 3차시에 다룬 최적화 방법 또는 경사하강법을 통해 오차함수를 최적화하는 일만 남았습니다. 그런데 혹시 지난 차시에 제약식을 도입한 최적화도 분명 다루었는데 이 방법은 어떻게 적용해야할지 궁금해하시는 분이 계실지 모르겠어요.
 
-L1 거리로 제약식 추가 -> 라소 회귀분석   
-L2 거리로 제약식 추가 -> 릿지 회귀분석
+통계 모형의 최적화 과정에 추가적인 제약을 넣는 방법을 바로 <b>정규화</b>라고 합니다. 모형의 모수들이 오차함수를 줄이는 것 뿐 아니라, 우리가 원하는 추가적인 조건을 만족하면서 학습하도록 유도하는 방법이에요. 선형회귀 모형에서 주로 활용하는 정규화 방법은 크게 2가지입니다.
+
+첫째는 변수가 굉장히 많아서 이 중 일부만을 모형에 활용하고 싶은 경우입니다. 즉 회귀계수의 대부분을 0으로 고정해두고, 오차를 가장 크게 줄이는 소수의 회귀계수만을 변동시키고 싶을 때에요. 이 경우 오차함수의 최적화 식에 회귀계수의 절댓값의 합이 특정값 T를 넘지 않는다는 제약식을 걸어두면 됩니다.
+
+둘째는 모든 변수를 고르게 활용하고 싶은 경우입니다. 반대로 모든 회귀계수가 최대한 0으로부터 멀어졌으면 하는 경우죠. 이 경우 최적화 식에 회귀계수의 제곱의 합이 마찬가지로 특정값을 넘지 않는다는 제약식을 걸어서 학습을 수행합니다.
+<br></br>
+![session04_09](./image/session04_09_regularization.png)
+<br></br>
+그런데 2계도함수를 통한 최적화 과정에서 우리가 제약식 앞에 붙는 상수항을 정해주는 일과 T의 크기를 정하는 일은 사실 동치입니다. 다시 말해 T를 직접 정해주지 않고 제약식 앞의 비례상수를 정해주기만 하면 최적화과정에 제약식을 거는 효과를 얻을 수 있습니다. 따라서 앞서 언급한 두 가지 제약식을 다음과 같이 오차함수에 바로 추가하면 이 새로운 오차함수가 우리가 원하는 형태의 최적화를 가능하게 합니다.
+<br></br>
+![session04_10](./image/session04_10_elastic.png)
+<br></br>
+이 중 lambda1만을 활용하고 lambda2가 0일때 이를 Lasso 회귀분석이라고 합니다. lambda2만을 활용할때는 Ridge, 둘 다 활용하는 경우를 Elastic Net 회귀분석이라고 합니다.
 
 
 ### Scikit-learn 패키지
 
-각종 머신러닝 툴들이 가득한 개꿀패키지  
-회귀분석, 분류분석, 클러스터링, 모형선택 등을 위한 여러 메소드들이 있음  
-우리는 이 중 경사하강법이랑 선형회귀 배웠으니까 linear_model.SGDRegressor를 사용할거임  
-fit() 예시
-predict() 예시  
-get_params() 예시  
-메소드마다 score() 함수가 있는데 linear_model에서는 R-squared라는 걸 사용함. R-squared 설명
+Scikit-learn은 통계학 또는 머신러닝 분야에서 이용하는 수많은 통계 모형들을 python에서 쉽게 이용할 수 있도록 해주는 멋진 패키지입니다. 이 중 우리는 선형회귀모형을 이용하는 방법에 대해 간단히 다뤄보도록 해요. 다양한 종류의 선형회귀모형 클래스를 제공하므로 입맛에 맞는 모형을 하나 먼저 불러옵시다.
+```Python
+# Ordinary Least Squares
+from sklearn.linear_model import LinearRegression
+# Huber 오차함수를 이용하는 선형회귀모형
+from sklearn.linear_model import HuberRegressor
+# 경사하강법을 활용한 선형회귀모형
+from sklearn.linear_model import SGDRegressor
+```
+편의상 X, Y 데이터는 이미 준비되었다고 생각하고 코드를 적어보도록 하겠습니다. 이때 Y 데이터는 학습을 통해 우리가 예측하고자 하는 종속변수, X 데이터는 이를 설명하고자 하는 설명변수/통제변수입니다. X, Y 데이터는 전부 Numpy array 객체입니다.
+```Python
+import numpy as np
+
+# X, Y 데이터를 정규분포로부터 랜덤하게 생성해보았습니다.
+X = np.random.randn(10,10)
+Y = np.random.randn(10)
+
+"""
+SGDRegressor의 입력값
+
+loss : 오차함수의 형태 (squared_loss, huber, epsilon_insensitive 등)
+penalty : 제약식의 형태 (l2, l1, elasticnet)
+max_iter : 경사하강법의 반복횟수
+eta0 : 학습률의 초깃값
+learning_rate : 학습률의 변화방법 (constant, invscaling 등)
+verbose : 학습과정의 출력여부
+
+"""
+model = SGDRegressor(loss='squared_loss', penalty=None,
+                     max_iter=1000, eta0=0.1, learning_rate='constant',
+                     verbose=True)
+
+model.fit(X,Y)              # 선형회귀모형을 학습시킵니다.
+print(model.coef_)          # 회귀계수 출력. 순서는 X와 같습니다.
+print(model.intercept_)     # 상수항 출력
+
+print(model.score(X,Y))     # 모형의 R-squared값 출력
+```
+scikit-learn 패키지에서는 각 모형이 얼마나 잘 학습되었는지를 나타내주는 score() 함수를 제공하고 있습니다. 선형회귀모형에서는 R-squared를 그 척도로 주로 활용하곤 합니다.
+
+R-squared란 Y변수가 자체적으로 가지고 있는 분산에 비해 모형의 오차가 얼마나 작은가를 나타내어주는 통계량입니다. 만약 Y변수가 관측오차 등 외생적 요인으로 인해 변동이 큰 변수라면 아무리 좋은 데이터 X를 활용하더라도 모형의 오차는 커질 수 밖에 없겠죠. 따라서 이 경우 오차함수의 절대적 크기보다는 R-squared 값을 통해 모형의 적합성을 판단하는 편이 더 정확하다고 볼 수 있습니다.
+<br></br>
+![session04_11](./image/session04_11_R2.png)
+<br></br>
 
 
 ### 참고자료
@@ -90,3 +149,7 @@ https://ko.wikipedia.org/wiki/%EA%B0%80%EB%8A%A5%EB%8F%84
 https://medium.com/mathpresso/mathpresso-%EB%A8%B8%EC%8B%A0-%EB%9F%AC%EB%8B%9D-%EC%8A%A4%ED%84%B0%EB%94%94-3-%EC%98%A4%EC%B0%A8%EB%A5%BC-%EB%8B%A4%EB%A3%A8%EB%8A%94-%EB%B0%A9%EB%B2%95-7d1fb64ea0cf
 * Mathpresso 머신 러닝 스터디 — 3.5 오차를 다루는 방법_2 – Mathpresso – Medium  
 https://medium.com/mathpresso/mathpresso-%EB%A8%B8%EC%8B%A0-%EB%9F%AC%EB%8B%9D-%EC%8A%A4%ED%84%B0%EB%94%94-3-5-%EC%98%A4%EC%B0%A8%EB%A5%BC-%EB%8B%A4%EB%A3%A8%EB%8A%94-%EB%B0%A9%EB%B2%95-2-e23e08d95cc3
+* [ISL] 6장 -Lasso, Ridge, PCR이해하기 · Go's BLOG  
+https://godongyoung.github.io/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/2018/02/07/ISL-Linear-Model-Selection-and-Regularization_ch6.html
+* Documentation scikit-learn: machine learning in Python — scikit-learn 0.19.1 documentation  
+http://scikit-learn.org/stable/documentation.html
