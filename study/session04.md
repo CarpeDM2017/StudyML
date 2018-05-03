@@ -50,7 +50,6 @@
 
 ### 선형회귀
 
-
 ![session04_06](./image/session04_06_linear.png)
 ![session04_07](./image/session04_07_linear.png)
 <br></br>
