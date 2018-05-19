@@ -11,9 +11,6 @@
   ```Python
   ```
 
-2. sklearn house price 예측 문제
-
-
 
 ### 가법모형
 
