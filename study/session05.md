@@ -6,9 +6,17 @@
 * 의사결정나무
 
 
-1. sklearn Iris dataset 분류 문제
-  ```Python
-  ```
+1. 다음과 같이 pickle 패키지를 통해 X, Y 데이터를 불러옵시다. X, Y 데이터는 session05.pkl 파일에 딕셔너리 형태로 들어가있습니다.
+    ```Python
+    import pickle
+
+    path = '../../session05.pkl'     # session05.pkl이 있는 경로를 넣어주세요
+    with open(path, 'rb') as f:
+        data = pickle.load(f)
+    X = data['X']
+    Y = data['Y']
+    ```
+    scikit-learn의 SGDClassifier 클래스를 이용해 Y와 X의 관계를 밝혀내봅시다! session05.py에 모형의 평균 정확도를 출력하는 코드를 적어주세요.
 
 
 ### 가법모형
@@ -21,7 +29,7 @@
 <br></br>
 ![session05_02](./image/session05_02_gam.png)
 <br></br>
-대표적인 가법모형으로는 <b>다항회귀모형</b>이 있겠네요. 다항회귀란 마치 테일러 전개에서와 같이 X변수의 1차항 뿐 아니라 2차, 3차 등의 고차항을 선형회귀식의 변수로 이용하는 방법입니다.
+대표적인 가법모형으로는 <b>다항회귀모형</b>이 있습니다. 다항회귀란 마치 테일러 전개에서와 같이 X변수의 1차항 뿐 아니라 2차, 3차 등의 고차항을 선형회귀식의 변수로 이용하는 방법입니다.
 <br></br>
 ![session05_03](./image/session05_03_polynomial.png)
 <br></br>
