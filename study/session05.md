@@ -86,7 +86,7 @@ poly = PolynomialFeatures(2, include_bias=False)
 X_poly = poly.fit_transform(X)      # 2차항과 교차항을 추가합니다.
 
 model.fit(X_poly,Y)
-print(model.decision_function(X))
+print(model.decision_function(X_poly))
 print(model.coef_)
 print(model.intercept_)
 print(model.score(X_poly,Y))
