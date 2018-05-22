@@ -98,54 +98,157 @@ Y가 n가지 분류를 가지는 경우, model.decision_function()은 각각의 
 
 ### Support Vector Machine
 
-서포트벡터머신 또한 일반화 가법모형의 한 갈래입니다.
+<b>Support Vector Machine</b>(SVM) 또한 일반화 가법모형의 한 갈래입니다. SVM은 로지스틱 회귀와 같이 본래 이진분류를 위해 만들어진 모형입니다. SVM에서는 두 분류를 나누는 경계선이 각 분류에 해당하는 점들로부터 최대한 멀어지도록 목적함수를 설정합니다. 다시 말해, 각 관측값으로부터 경계선까지의 거리의 최솟값을 뜻하는 <b>margin</b>을 최대화하여 두 분류가 서로 가장 먼 곳에서 경계선을 형성합니다.
+<br></br>
+![session05_07](./image/session05_07_svm.png)
+<br></br>
+한편 분류문제가 아닌 연속형 변수에 대한 회귀문제의 경우 마진은 최소화해야겠지요! 따라서 이 경우 반대로 각 관측값으로부터 경계선까지의 거리의 최댓값이 최소화되도록 목적함수를 다시 정의한 <b>Support Vector Regression</b> 모형을 이용합니다.
 
-======================= 여기까지 함  
+우선 SVM의 수식부터 한번 적어볼게요. Y는 -1 또는 1을 가지는 이진변수입니다.
+<br></br>
+![session05_08](./image/session05_08_svm.png)
+<br></br>
+여기서 phi를 만약 선형연산으로 정의하고, phi에 대한 노름을 L2 거리로 정의하면 두번째 줄의 식은 정확히 위 이미지에서의 초록색 점과 빨간색 점 간의 거리를 최대화하는 식이 됩니다.
 
-서포트벡터머신은 원래 이진 분류 문제에서 비롯된 모형임  
-데이터를 A와 B 그룹으로 각각 나눌 때 어떻게 하면 그 경계선이 A와 B의 딱 중간에 있도록 할 수 있을까에서 유래한 거 같아  
-이때 경계선을 구하고 나면, 실상 각각 A, B로부터 그 경계선에 가장 가까운 점 2개만 빼고 나머지를 다 지운 다음  
-경계선을 다시 구해보면 똑같은 게 나옴  
-그래서 이 두 점이 경계선을 support 한다고 해서 support vectors라고 하고 support vectors를 찾은 다음  
-그 경계선을 구하는 방법이 SVM임  
+한편 SVR의 수식은 다음과 같아요.
+<br></br>
+![session05_09](./image/session05_09_svr.png)
+<br></br>
+모형의 수식을 통해 얻은 Y의 예측값과 실제 Y값 간의 차이가 전부 epsilon 이내에 위치할 때, SVM과 마찬가지로 예측값을 최대한 정 가운데로 위치시키고자 하는 수식입니다.
 
-이진분류 문제를 확장해서 SVM 여러개로 one vs rest, one vs one 등으로 multiclass classification을 함  
-또 한편으로는 데이터가 특정 경계선을 중심으로 epsilon 이상 떨어져있지 않다고 하면  
-그 경계선에 최대한 내 함수를 맞추는 방식으로 regression이 가능  
+그러나 데이터상에서 두 가지 분류가 서로 뒤섞여있거나, 아웃라이어 등으로 인해 모든 데이터가 epsilon 구간 안에 위치하지 않을 수도 있겠죠! 이러한 경우 위 두 수식을 만족하는 해는 존재하지 않습니다. 따라서 실제 데이터 분석 작업에서는 위 수식에서의 제약식을 조금 완화하여 사용하곤 하는데요, 완화하지 않은 형태의 목적함수를 <b>Hard-margin</b>, 완화하여 제약식에서의 오차를 허용하는 목적함수를 <b>Soft-margin</b> 형태라고 합니다.
 
-그런데 대부분의 경우 A와 B가 딱 잘라서 나뉘어지는 경우가 없고 뒤섞여있자너  
-그래서 epsilon에다가 추가로 zeta만큼의 오차까지 허용해주고, 이 zeta를 정규화식으로 넣어줌으로써 학습시킴  
-zeta가 없는 앞선 방법론을 hard margin이라고 하고 이걸 soft margin이라고 함  
+주어진 제약식을 만족하면 0, 만족하지 않으면 그 차분만큼 더해주는 형태의 오차함수인 <b>Hinge Loss</b>을 정규항으로 추가한 뒤 본래의 제약식을 제거하면 바로 쉽게 Soft-margin 형태의 SVM, SVR을 만들 수 있습니다.
+<br></br>
+![session05_10](./image/session05_10_hinge.png)
+<br></br>
+코딩 예시를 살펴보기 전에, 혹시 왜 SVM 모형을 다항회귀, 로지스틱 회귀 등의 모형들과 분리해 따로 소개했는지 눈치채셨나요? 대부분의 가법 모형들은 그 목적함수가 데이터의 예측값과 실제 데이터 간의 오차함수로, 그리고 제약식은 모형의 모수에 대한 식으로 이루어져 있습니다. 그러나 SVM 모형은 이와 달리 목적함수가 모형의 모수에, 제약식이 오차함수로 이루어져있죠. 제약식을 정규항을 통해 완화하면 이 차이는 결국 없어지겠지만, 모형을 통해 본래 표현하고자 하는 주안점이 다르다는 점을 기억해주셨으면 해요.
+```Python
+# Scikit-learn에서는 SVR이 아닌 SVM을 Support Vector Classifier라고 지칭합니다.
+from sklearn.svm import SVC, SVR
+import numpy as np
 
-SVM이 가법모형과 다른 점은  
-가법모형은 오차함수가 데이터의 상관관계로부터 얻는 오차 (MSE, Huber 등)이고 제약식은 모수에 걸리는 반면  
-SVM은 오차함수가 모수의 크기 + zeta 정규식이고 제약식이 데이터의 오차야  
+# X 데이터는 정규분포, Y 데이터는 베르누이분포로 추출하였습니다.
+X = np.random.randn(10,10)
+Y = np.random.binomial(1,0.5,10)
 
-경계선이 선형이라고 가정할 때가 linear SVM  
-여기에 가법모형과 같이 비선형함수 f(.)를 적용해서 적합하면 polynomial SVM, radial SVM 등등   
+"""
+SVC의 입력값
+
+C : 정규항의 비례상수
+kernel : X변수에 대해 적용할 phi 함수의 형태 (linear, poly, rbf, sigmoid)
+degree : kernel=poly인 경우 다항식의 차수
+gamma : phi 함수의 모수 (kernel의 형태에 따라 다릅니다)
+max_iter : libsvm 알고리즘의 반복횟수
+verbose : 학습과정의 출력여부
+
+"""
+# 선형 SVM 모형입니다.
+model = SVC(C=1.0, kernel='linear', max_iter=1000, verbose=True)
+
+model.fit(X,Y)             
+print(model.decision_function(X))
+print(model.coef_)
+print(model.intercept_)
+print(model.score(X,Y))     # 모형의 평균 정확도를 출력합니다.
+
+"""
+SVR의 입력값
+
+C : 정규항의 비례상수
+epsilon : epsilon의 크기
+kernel : X변수에 대해 적용할 phi 함수의 형태 (linear, poly, rbf, sigmoid)
+degree : kernel=poly인 경우 다항식의 차수
+gamma : phi 함수의 모수 (kernel의 형태에 따라 다릅니다)
+max_iter : libsvm 알고리즘의 반복횟수
+verbose : 학습과정의 출력여부
+
+"""
+# 다항식을 이용한 SVR 모형입니다.
+model = SVR(C=1.0, epsilon=0.1, kernel='poly', degree=3, gamma=1,
+            max_iter=1000, verbose=True)
+
+model.fit(X,Y)             
+# 분류모형이 아니므로 decision_function은 없습니다.
+print(model.coef_)
+print(model.intercept_)
+print(model.score(X,Y))     # 모형의 R-squared값을 출력합니다.
+
+```
 
 
 ### 의사결정나무
 
-의사결정나무는 정말 나무 같이 생겼음  
-의사결정나무도 SVM과 마찬가지로 이진분류문제에서 비롯되었나봐  
-맨 처음 노드(나무의 꼭대기)는 관찰한 데이터의 분포만으로  
-우리가 새로운 관측값을 얻었을 때 이게 A인지 B인지를 찍어야하는 상황이야  
-이 상황에서의 최선은 둘 중 더 많이 관측된 값으로 찍는 거겠징  
+![session05_11](./image/session05_11_tree.jpg)
+<br></br>
+<b>의사결정나무</b> 모형에서는 주어진 관측값이 특정 조건을 만족하는지의 여부에 따라 순차적으로 다른 조건을 적용해나가며, 나무의 시작단(상위 노드)에서부터 끝단(하위 노드)까지 따라내려갑니다. 더 이상 추가적인 조건의 판단이 필요 없는 지점(말단 노드)에 다다르면 모형의 처리과정이 끝나고, 말단 노드에 기록되어 있는 값을 그대로 출력합니다.
 
-여기서 예컨대 X1값이 10보다 크면 A 아니면 B다와 같이 조건을 하나씩 추가하면서  
-새로운 관측값에 대한 정확도를 조금씩 높여나감  
-사전에 정한 조건의 개수, 또는 나무의 높이 등등의 기준을 만족하면 모형의 학습이 끝남  
+즉, 우리가 Y값을 분류/예측하고자 할때 각 구간 내에서 Y값이 일정한 값을 가지도록 X값을 여러 구간으로 나누는 방법입니다. 일반화 가법모형의 형태로 표현하자면 다음과 같은 <b>단위 계단 함수</b>의 합과 합성으로 이루어진 모형이라 할 수 있습니다.
+<br></br>
+![session05_12](./image/session05_12_step.png)
+<br></br>
+의사결정나무 모형에서는 보통 목적함수의 형태를 직접적으로 정해두지 않고, 모형이 가져야 할 모수의 개수, 함수 합성의 최대 길이 등 목적함수가 갖추어야 할 간접적인 특징들을 정의합니다. 이후 이러한 특징들을 만족하면서 오차함수를 줄여나갈 수 있는 알고리즘을 통해 나무를 첫단에서부터 순서대로 생성해나갑니다.
+<br></br>
+![session05_13](./image/session05_13_gini.png)
+<br></br>
+분류를 목적으로 의사결정나무를 이용하는 경우, 각 노드에 대해 위 수식으로 나타나는 <b>지니 불순도</b>를 낮추는 방향으로 나무를 생성할 수 있습니다. 여기서 p_i는 해당 노드에 속하는 관측값 중 i번째 분류에 속하는 값들의 비율을 뜻해요. 여기서 한 i에 대해 p_i=1이 되어야지만 지니 불순도가 0이 되므로, 말단 노드가 언제나 한 가지 분류값만을 가지도록 모형을 학습시킬 수 있습니다.
+<br></br>
+![session05_14](./image/session05_14_info.png)
+<br></br>
+한편 <b>정보획득</b>을 최대화함으로써도 유사한 효과를 얻을 수 있습니다. 이때 엔트로피에 대한 식을 보시면 -plogp의 형태인데요, 하위 노드의 엔트로피를 최소화함으로써 정보획득을 최대화할 수 있습니다. 이때 -p^2 형태인 지니 불순도와 비교해보면 정보획득을 최대화하는 알고리즘에서는 p=0보다는 p=1 근처, 즉 p가 더 커지는 쪽을 선호하는 것을 알 수 있어요.
+<br></br>
+![session05_15](./image/session05_15_var.png)
+<br></br>
+연속형 변수에 대한 회귀문제의 경우 주로 <b>분산 감소</b> 알고리즘을 이용합니다. 여기서 S_t와 S_f는 상위 노드 S를 계단 함수를 통해 둘로 나누었을 때의 두 하위 노드를 의미합니다. 즉 위 수식은 분기를 주기 전 상위 노드에서의 분산값이 분기를 준 이후 두 하위 노드에서 얼마나 줄었는지를 나타냅니다. 학습 과정에서 분산이 가장 많이 감소하는 지점에서 추가적인 조건을 적용해 분기를 주면 학습이 끝난 뒤 말단 노드에서의 분산은 굉장히 작아지겠죠!
 
-이때 새로 추가할 조건의 내용과 나무 상에서의 위치를 정하는 기준(오차함수)은 크게 3가지가 있음  
+이렇게 학습의 조건만 정의해주면 알아서 목적함수의 형태를 결정해주는 모형을 <b>비모수적 모형</b>이라고 합니다. 앞서 언급한 가법모형에서의 phi 함수 또한 이와 같은 비모수적 방법으로 학습시킬 수 있어요. 비모수 모형의 장점은 역시 수식의 형태를 직접 결정해주지 않아도 알고리즘이 데이터에 맞게 잘 조정해준다는 점입니다. 그러나 알고리즘에 따라 적합한 문제 상황이 다르므로 모형의 모수를 정의하듯 알고리즘을 잘 선택해주어야 합니다.
+```Python
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+import numpy as np
 
-첫째는 지니 불순도인데, 나무를 거쳐서 나온 예측값들이 서로 얼마나 뒤섞여있는지를 판단  
-지니 불순도를 최소화하는 방향으로 학습함으로써 예측값의 정확도를 높일 수 있음  
+# X 데이터는 정규분포, Y 데이터는 베르누이분포로 추출하였습니다.
+X = np.random.randn(10,10)
+Y = np.random.binomial(1,0.5,10)
 
-둘째는 조건을 추가하기 전의 엔트로피와 조건을 추가한 이후의 엔트로피의 차이를 계산해서 이를 최대화   
-즉 엔트로피를 낮추는 방향으로 학습시켜서 불확실성을 줄임  
+"""
+DecisionTreeClassifier의 입력값
 
-셋째는 조건을 추가하기 전의 분산과 이후의 분산의 차이를 최대화  
+criterion : 학습의 기준이 되는 오차함수 (gini, entropy)
+splitter : 하위 노드로의 분기 기준 (best, random)
+max_depth : 나무의 최대 길이
+max_leaf_nodes : 말단 노드의 최대 개수
+
+"""
+model = DecisionTreeClassifier(criterion='gini',
+                               splitter='best',
+                               max_depth=10,
+                               max_leaf_nodes=100
+                               )
+
+model.fit(X,Y)
+print(model.feature_importances_)   # 학습 과정에서 각 X변수의 중요도를 출력합니다.
+print(model.score(X,Y))             # 모형의 평균 정확도를 출력합니다.
+
+"""
+DecisionTreeRegressor의 입력값
+
+criterion : 학습의 기준이 되는 오차함수 (mse, friedman_mse, mae)
+splitter : 하위 노드로의 분기 기준 (best, random)
+max_depth : 나무의 최대 길이
+max_leaf_nodes : 말단 노드의 최대 개수
+
+"""
+model = DecisionTreeRegressor(criterion='mse',
+                               splitter='best',
+                               max_depth=10,
+                               max_leaf_nodes=100
+                               )
+
+model.fit(X,Y)
+print(model.feature_importances_)
+print(model.score(X,Y))             # 모형의 R-squared값을 출력합니다.
+```
+이때 model.feature_importances_는 각 X변수에 대해 분기점이 생길 때마다 오차함수가 얼마나 줄어들었는지를 계산한 뒤, 각 분기점에 도달할 확률을 곱해 가중평균한 값입니다. 즉 데이터가 해당 분기점에 많이 도달할 수록, 그리고 오차함수가 많이 감소할수록 해당 X변수의 중요도를 높게 평가합니다.
 
 
 ### 참고자료
@@ -164,3 +267,13 @@ https://hyperdot.wordpress.com/2017/02/06/%EA%B3%BC%EC%A0%81%ED%95%A9overfitting
 https://ratsgo.github.io/machine%20learning/2017/04/02/logistic/
 * 1.5. Stochastic Gradient Descent — scikit-learn 0.19.1 documentation    
 http://scikit-learn.org/stable/modules/sgd.html#sgd
+* Jaejun Yoo's Playground: 초짜 대학원생의 입장에서 이해하는 Support Vector Machine (1)  
+http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html
+* 결정 트리 학습법 - 위키백과, 우리 모두의 백과사전  
+https://ko.wikipedia.org/wiki/%EA%B2%B0%EC%A0%95_%ED%8A%B8%EB%A6%AC_%ED%95%99%EC%8A%B5%EB%B2%95
+* 의사결정나무(Decision Tree) · ratsgo's blog  
+https://ratsgo.github.io/machine%20learning/2017/03/26/tree/
+* 탐욕 알고리즘 - 위키백과, 우리 모두의 백과사전  
+https://ko.wikipedia.org/wiki/%ED%83%90%EC%9A%95_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
+* 모수 모델 vs. 비모수 모델  
+https://brunch.co.kr/@seoungbumkim/7
