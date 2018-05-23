@@ -170,7 +170,7 @@ model = SVR(C=1.0, epsilon=0.1, kernel='poly', degree=3, gamma=1,
 
 model.fit(X,Y)             
 # 분류모형이 아니므로 decision_function은 없습니다.
-print(model.coef_)
+print(model.coef_)          # model.coef_는 linear kernel에서만 출력됩니다.
 print(model.intercept_)
 print(model.score(X,Y))     # 모형의 R-squared값을 출력합니다.
 
