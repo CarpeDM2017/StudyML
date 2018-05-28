@@ -17,7 +17,7 @@
   X = data['X']
   Y = data['Y']
   ```
-  scikit-learn의 SGDRegressor 클래스를 이용해 Y와 X의 관계를 밝혀내봅시다! session04.py에 각 X열이 가지는 회귀계수와 모형의 R-squared를 출력하는 코드를 적어주세요.
+  Scikit-learn의 SGDRegressor 클래스를 이용해 Y와 X의 관계를 밝혀내봅시다! session04.py에 각 X열이 가지는 회귀계수와 모형의 R-squared를 출력하는 코드를 적어주세요.
 
 
 ### 오차함수
