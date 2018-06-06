@@ -29,8 +29,8 @@ def train(model, epochs):
       batch_size=BATCH_SIZE
     )
     for epoch in range(epochs):
-        avg_score = 0
-        for step, (images, labels) in enumerate(train_loader):
+      avg_score = 0
+      for step, (images, labels) in enumerate(train_loader):
           images = images.numpy().reshape(images.size(0), -1)
           labels = labels.numpy()
           model.fit(images, labels)
@@ -38,9 +38,8 @@ def train(model, epochs):
           avg_score += score
           if (step+1) % LOG_STEP == 0:
               print('Step : {}  Score : {}'.format(step+1, score))
-        avg_score /= len(train_loader)
-        print('Epoch : {}  Score : {}'.format(epoch+1, avg_score))
-    return model
+      avg_score /= len(train_loader)
+      print('Epoch : {}  Score : {}'.format(epoch+1, avg_score))
 
 def test(model):
     global DATA_PATH
@@ -51,9 +50,9 @@ def test(model):
     )
     avg_score = 0
     for step, (images, labels) in enumerate(test_loader):
-        images = images.numpy().reshape(images.size(0), -1)
-        labels = labels.numpy()
-        avg_score += model.score(images, labels)
+      images = images.numpy().reshape(images.size(0), -1)
+      labels = labels.numpy()
+      avg_score += model.score(images, labels)
     avg_score /= len(test_loader)
     print('Test Score : {}'.format(avg_score))
 
@@ -62,9 +61,9 @@ def test(model):
 #
 # model = SGDClassifier(...) 등 마음에 드는 모형으로 정의하기
 #
-# model = train(model, 100)     # training set을 100번 순환합니다.
-# test(model)                   # test set 전체에 대한 평균 점수 출력
-# model = train(model, 10)
+# train(model, 100)     # training set을 100번 순환합니다.
+# test(model)           # test set 전체에 대한 평균 점수 출력
+# train(model, 10)
 # test(model)
 # ...
 ```
